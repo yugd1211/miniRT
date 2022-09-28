@@ -20,6 +20,14 @@ typedef enum e_switch
 	OFF
 }	t_switch;
 
+typedef enum e_correlation
+{
+	IN_IN = 0,
+	IN_OUT,
+	OUT_IN,
+	OUT_OUT
+}	t_correlation;
+
 typedef enum e_type
 {
 	PLANE = 0,
@@ -148,7 +156,7 @@ typedef struct s_meet
 	void		*object;
 	t_type		object_type;
 	t_point		meet;
-	t_switch	light;
+	t_point		dir_vec;
 	double		parm_t;
 	double		temp_t;
 }	t_meet;

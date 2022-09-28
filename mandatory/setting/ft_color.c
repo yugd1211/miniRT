@@ -6,11 +6,19 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/28 13:33:11 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/28 17:23:28 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	ft_distance(t_meet meet_point, t_line line, t_light light)
+{
+	double	dist;
+
+	dist = distance(meet_point.meet, light.light_point);
+	return (dist / sqrt(dot_product(line.dir_vec, line.dir_vec)));
+}
 
 int	ft_light_check(t_minirt info, t_meet meet_point)
 {
@@ -38,41 +46,16 @@ int	ft_light_check(t_minirt info, t_meet meet_point)
 				cone_meet(*temp_object, meet, line);
 			else
 				ft_error("Wrong object");
-			if (meet->parm_t > 0)
+			if (meet->parm_t > 0 && meet->parm_t <= ft_distance(meet_point, line, *temp_light))
 				break ;
 			temp_object = temp_object->next;
 		}
-		if (meet->parm_t == 0)
-		{
-			calculate_phong();
-		}
+		if (meet->parm_t == 0 || meet->parm_t > ft_distance(meet_point, line, *temp_light))
+			phong_reflexion(meet_point, temp_light, info);
 		free(meet);
 		temp_light = temp_light->next;
 	}
 }//광원과 오브젝 사이에 임의의 오브젝이 있는지 검사;
-
-void	renew_parm_t(t_object object, t_meet *meet, t_line line, t_type type)
-{
-	meet->parm_t = meet->temp_t;
-	meet->meet = line.dir_vec;
-	n_multi_vec(meet->temp_t, &(meet->meet));
-	vec_plus_vec(meet->meet, line.start_point, &(meet->meet));
-	meet->object = object.object;
-	meet->object_type = type;
-}
-
-t_meet	*new_meet(t_minirt info)
-{
-	t_meet	*new;
-
-	new = malloc(sizeof(t_meet));
-	if (!new)
-		ft_error("Wrong malloc");
-	new->light = OFF;
-	new->object = NULL;
-	new->parm_t = 0;
-	new->meet = info.necessity.camera.view_point;
-}
 
 void	ft_color(t_minirt info, t_line line)
 {
@@ -95,7 +78,34 @@ void	ft_color(t_minirt info, t_line line)
 			ft_error("Wrong object");
 		temp_object = temp_object->next;
 	}
+	if (meet->parm_t == 0)
+	{
+		ambient_light();//주변광
+	}
 	free(meet);
+}
+
+void	renew_parm_t(t_object object, t_meet *meet, t_line line, t_type type)
+{
+	meet->parm_t = meet->temp_t;
+	meet->meet = line.dir_vec;
+	n_multi_vec(meet->temp_t, &(meet->meet));
+	vec_plus_vec(meet->meet, line.start_point, &(meet->meet));
+	meet->dir_vec = line.dir_vec;
+	meet->object = object.object;
+	meet->object_type = type;
+}
+
+t_meet	*new_meet(t_minirt info)
+{
+	t_meet	*new;
+
+	new = malloc(sizeof(t_meet));
+	if (!new)
+		ft_error("Wrong malloc");
+	new->object = NULL;
+	new->parm_t = 0;
+	new->meet = info.necessity.camera.view_point;
 }
 
 void	plane_meet(t_object object, t_meet *meet, t_line line)
@@ -117,6 +127,7 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 			meet->meet = line.dir_vec;
 			n_multi_vec(meet->temp_t, &(meet->meet));
 			vec_plus_vec(meet->meet, line.start_point, &(meet->meet));
+			meet->dir_vec = line.dir_vec;
 			meet->object = object.object;
 			meet->object_type = PLANE;
 		}

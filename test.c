@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct s_point
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_point;
+
 char	**ft_malloc_error(char **tab)
 {
 	unsigned int	i;
@@ -155,18 +162,31 @@ double	ft_atof(char *str)
 	return (num * sign);
 }
 
-int	main(void)
-{
-	char	**temp;
-	char	*str = "hello this point	is 		1,2,3, ,5";
-	int		count;
-	int		i;
+// int	main(void)
+// {
+// 	char	**temp;
+// 	char	*str = "hello this point	is 		1,2,3, ,5";
+// 	int		count;
+// 	int		i;
 
-	i = 0;
-	count = 0;
-	printf("10 : %lf -10.1234 : %lf  -0.1235425 : %lf 0.0001 : %lf\n", ft_atof("10"), ft_atof("-10.1234"), ft_atof(" -0.1235425"), ft_atof("0.0001"));
-	temp = ft_split(str, " \t,", &count);
-	while (i < count)
-		printf("%s %d\n", temp[i++], count);
+// 	i = 0;
+// 	count = 0;
+// 	printf("10 : %lf -10.1234 : %lf  -0.1235425 : %lf 0.0001 : %lf\n", ft_atof("10"), ft_atof("-10.1234"), ft_atof(" -0.1235425"), ft_atof("0.0001"));
+// 	temp = ft_split(str, " \t,", &count);
+// 	while (i < count)
+// 		printf("%s %d\n", temp[i++], count);
+// 	return (0);
+// }
+
+int main(void)
+{
+	t_point point1;
+	t_point	point2;
+
+	point1.x = 1.5;
+	point1.y = 2.5;
+	point1.z = 3.75;
+	point2 = point1;
+	printf("p2.x: %lf p2.y : %lf p2.z : %lf\n", point2.x, point2.y, point2.z);
 	return (0);
 }
