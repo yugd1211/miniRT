@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:44 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/27 17:42:52 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 15:13:03 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,24 @@ double	distance(t_point p1, t_point p2)
 	return (distance);
 }
 
-double	abs(double ans)
+double	ft_abs(double ans)
 {
 	if (ans < 0)
 		return (ans * -1);
 	return (ans);
+}
+
+double	n_square(double num, size_t index)
+{
+	size_t	count;
+	double	ret;
+
+	count = 0;
+	ret = 1;
+	while (count < index)
+	{
+		ret *= num;
+		count++;
+	}
+	return (ret);
 }

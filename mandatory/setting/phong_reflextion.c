@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/28 18:11:59 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 15:16:44 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,22 @@
 
 void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info)
 {
-	t_color	coloring;
+	t_color						coloring;
+	t_point						*normal_vec;
+	t_light_view_correlation	correlation;
 
 	ft_type(&coloring, meet_point);
-	ambient_reflex(info, light);
-	disfusion_reflex(meet_point, light, info);
-	specular_reflex();
-}
+	normal_vec = ft_normal_vec(meet_point, info);
+	set_unit_vec(normal_vec);
+	correlation = ft_correlation(meet_point, light, info, *normal_vec);
+	ambient_reflex(info);
+	if (correlation == OUT_OUT || correlation == IN_IN)
+	{
+		disfusion_reflex(meet_point, light, *normal_vec);
+		specular_reflex(meet_point, light, info, *normal_vec);
+	}
+	free(normal_vec);
+} // 빛과 오브젝트 사이에 임의의 오브젝트가 없음
 
 void	ft_type(t_color *coloring, t_meet meet_point)
 {
@@ -34,9 +43,9 @@ void	ft_type(t_color *coloring, t_meet meet_point)
 		*coloring = ((t_cylinder *)(meet_point.object))->color;
 }
 
-double	ambient_reflex(t_minirt info, t_light light)
+double	ambient_reflex(t_minirt info)
 {
-	return (info.necessity.ambient.ambient_ratio * light.brightness_ratio);
+	return (info.necessity.ambient.ambient_ratio);
 }
 
 void	cylinder_tangent_plane(t_meet meet_point, t_point *nor_vec, t_minirt info)
@@ -97,7 +106,6 @@ void	cone_tangent_plane(t_meet meet_point, t_point *nor_vec, t_minirt info)
 	vec_plus_vec(temp_point, *nor_vec, nor_vec);
 }
 
-
 t_point	*ft_normal_vec(t_meet meet_point, t_minirt info)
 {
 	t_point	*nor_vec;
@@ -123,23 +131,51 @@ t_point	*ft_normal_vec(t_meet meet_point, t_minirt info)
 	return (nor_vec);
 }
 
-t_correlation	ft_correlation(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec) // 빛과 카메라가 오브젝트 내부에 있는지 여부
+t_light_view_correlation	ft_correlation(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec) // 빛과 카메라가 오브젝트 내부에 있는지 여부
 {
 	t_point	meet_camera;
 	t_point	meet_light;
+	double	inner_normal_light;
+	double	inner_normal_view;
 
 	vec_minus_vec(info.necessity.camera.view_point, meet_point.meet, &meet_camera);
-	vec_minus_vec(info.necessity.camera.view_point, light.light_point, &meet_light);
+	vec_minus_vec(light.light_point, meet_point.meet, &meet_light);
+	inner_normal_light = dot_product(meet_light, nor_vec);
+	inner_normal_view = dot_product(meet_camera, nor_vec);
+	if (inner_normal_light > 0 && inner_normal_view > 0)
+		return (OUT_OUT);
+	else if (inner_normal_light > 0 && inner_normal_view <= 0)
+		return (OUT_IN);
+	else if (inner_normal_light <= 0 && inner_normal_view > 0)
+		return (IN_OUT);
+	return (IN_IN);
 }
 
-double	disfusion_reflex(t_meet meet_point, t_light light, t_minirt info)
+double	disfusion_reflex(t_meet meet_point, t_light light, t_point nor_vec)
 {
-	t_point	*normal_vec;
 	t_point	light_vec;
+	double	k_b;
 
-	normal_vec = ft_normal_vec(meet_point, info);
-	set_unit_vec(normal_vec);
+	k_b = pow(distance(light.light_point, meet_point.meet), 1.5);
 	vec_minus_vec(light.light_point, meet_point.meet, &light_vec);
-	free(normal_vec);
+	set_unit_vec(&light_vec);
+	return (dot_product(light_vec, nor_vec) * light.brightness_ratio * k_b);
 }
-	specular_reflex();
+
+double	specular_reflex(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
+{
+	t_point	light_vec;
+	t_point	camera_vec;
+	double	theta;
+	double	alpha;
+	double	k_s;
+
+	k_s = pow(distance(light.light_point, meet_point.meet), 1.5);
+	vec_minus_vec(light.light_point, meet_point.meet, &light_vec);
+	set_unit_vec(&light_vec);
+	vec_minus_vec(info.necessity.camera.view_point, meet_point.meet, &camera_vec);
+	set_unit_vec(&camera_vec);
+	theta = acos(dot_product(light_vec, nor_vec));
+	alpha = acos(dot_product(camera_vec, nor_vec));
+	return (n_square(cos(ft_abs(theta - alpha)), 64) * light.brightness_ratio * k_s);
+}

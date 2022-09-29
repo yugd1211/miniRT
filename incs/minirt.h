@@ -20,13 +20,13 @@ typedef enum e_switch
 	OFF
 }	t_switch;
 
-typedef enum e_correlation
+typedef enum e_light_view_correlation
 {
 	IN_IN = 0,
 	IN_OUT,
 	OUT_IN,
 	OUT_OUT
-}	t_correlation;
+}	t_light_view_correlation;
 
 typedef enum e_type
 {
@@ -188,9 +188,10 @@ t_light		*new_light(void);
 void		cross_product(t_point p1, t_point p2, t_point *ans);
 void		set_unit_vec(t_point *p);
 double		distance(t_point p1, t_point p2);
-double		abs(double ans);
+double		ft_abs(double ans);
 void		n_multi_vec(double n, t_point *p);
 void		vec_plus_vec(t_point p1, t_point p2, t_point *ans);
 void		vec_minus_vec(t_point p1, t_point p2, t_point *ans);
+double		n_square(double num, size_t index)
 
 #endif
