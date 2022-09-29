@@ -6,9 +6,11 @@
 #    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/09/29 19:27:47 by iyun             ###   ########seoul.kr   #
+#    Updated: 2022/09/29 19:32:28 by iyun             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
+
+INC_DIR			=	incs
 
 SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/utils/check_necessity.c mandatory/utils/color_utils.c \
@@ -50,7 +52,7 @@ else
 endif
 
 $(NAME):		$(OBJECTS)
-				$(CC) -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS)
+				$(CC) -I$(INC_DIR) -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS)
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
