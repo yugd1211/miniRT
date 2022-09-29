@@ -178,15 +178,27 @@ double	ft_atof(char *str)
 // 	return (0);
 // }
 
+int	ft_rounding(double num)
+{
+	int	round_down;
+
+	round_down = (int)num;
+	if (num - (double)round_down >= 0.50000000)
+		return (round_down + 1);
+	return (round_down);
+}
+
 int main(void)
 {
 	t_point point1;
 	t_point	point2;
+	int		color;
 
+	color = 255 << 16 | 255 << 8 | 255;
 	point1.x = 1.5;
-	point1.y = 2.5;
+	point1.y = 2.4;
 	point1.z = 3.75;
 	point2 = point1;
-	printf("p2.x: %lf p2.y : %lf p2.z : %lf\n", point2.x, point2.y, point2.z);
+	printf("p2.x: %lf p2.y : %x p2.z : %lf\n", point2.x, color, point2.z);
 	return (0);
 }

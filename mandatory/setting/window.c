@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/27 19:52:18 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 19:03:41 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_set_screen(t_minirt *info)
 	ft_set_top_left(info, temp);
 }
 
-void    ft_window(t_minirt *info)
+void	ft_window(t_minirt *info)
 {
 	int		x;
 	int		y;
@@ -82,7 +82,7 @@ void    ft_window(t_minirt *info)
 		while (x < info->window.win_size[WIDTH])
 		{
 			vec_minus_vec(info->screen.top_left, info->necessity.camera.view_point, &(line.dir_vec));
-			ft_color(*info, line);
+			ft_color(*info, line, x, y);
 			x++;
 			vec_plus_vec(info->screen.top_left, info->screen.holizon_vec, &(info->screen.top_left));
 		}

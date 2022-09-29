@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minirt.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
+/*   Updated: 2022/09/29 19:11:45 by iyun             ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
@@ -10,8 +21,11 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# include "../libft/libft.h"
 # include "illustrate.h"
+# include "utils.h"
+# include "setting.h"
+# include "reflexion.h"
+# include "get_hit_point.h"
 # include <../libmlx/mlx.h>
 
 typedef enum e_switch
@@ -40,9 +54,9 @@ typedef enum e_type
 
 typedef struct s_color
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
+	int	red;
+	int	green;
+	int	blue;
 }	t_color;
 
 typedef struct s_point
@@ -161,6 +175,14 @@ typedef struct s_meet
 	double		temp_t;
 }	t_meet;
 
+typedef struct s_phong
+{
+	t_color	coloring;
+	t_color	obj_color;
+	int		color;
+}	t_phong;
+
+
 double		square(double num);
 char		**ft_split(char const *str, char *charset, int *save_num);
 int			ft_atoi(const char *str);
@@ -192,6 +214,13 @@ double		ft_abs(double ans);
 void		n_multi_vec(double n, t_point *p);
 void		vec_plus_vec(t_point p1, t_point p2, t_point *ans);
 void		vec_minus_vec(t_point p1, t_point p2, t_point *ans);
-double		n_square(double num, size_t index)
+double		n_square(double num, size_t index);
+double		ret_max(double a, double b);
+double		ret_min(double a, double b);
+int			ft_rounding(double num);
+void		ft_type(t_color *coloring, t_meet meet_point);
+void		ambient_reflex(double coef, t_color obj_color, t_color *coloring);
+void		over_color_check(t_color *coloring);
+void		phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *draw);
 
 #endif
