@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 19:11:45 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 19:18:50 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,45 +182,9 @@ typedef struct s_phong
 	int		color;
 }	t_phong;
 
-
-double		square(double num);
-char		**ft_split(char const *str, char *charset, int *save_num);
-int			ft_atoi(const char *str);
-int			ft_error(char *str);
-void		ft_bzero(void *ptr, size_t count);
-size_t		ft_strlen(const char *str);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_strchr(const char *str, int ch);
-char		*ft_strdup(const char *src);
-char		*ret_backup(int fd, char *buf, char *backup);
-char		*ret_line(char **backup);
-char		*get_next_line(int fd);
-double		ft_atof(char *str);
-t_object	*new_object(void);
-void 		set_ambient_lighting(char **list, t_minirt *info, int *count);
-void 		set_camera(char **list, t_minirt *info, int *count);
-void 		set_light(char **list, t_minirt *info, int *count);
-void		set_sphere(char **list, t_object *object, int *count);
-double 		dot_product(t_point p1, t_point p2);
-void		set_cylinder(char **list, t_object *object, int *count);
-void		set_plane(char **list, t_object *object, int *count);
-void		set_cone(char **list, t_object *object, int *count);
-int			check_necessity(t_necessity necessity);
-t_light		*new_light(void);
-void		cross_product(t_point p1, t_point p2, t_point *ans);
-void		set_unit_vec(t_point *p);
-double		distance(t_point p1, t_point p2);
-double		ft_abs(double ans);
-void		n_multi_vec(double n, t_point *p);
-void		vec_plus_vec(t_point p1, t_point p2, t_point *ans);
-void		vec_minus_vec(t_point p1, t_point p2, t_point *ans);
-double		n_square(double num, size_t index);
-double		ret_max(double a, double b);
-double		ret_min(double a, double b);
-int			ft_rounding(double num);
-void		ft_type(t_color *coloring, t_meet meet_point);
-void		ambient_reflex(double coef, t_color obj_color, t_color *coloring);
-void		over_color_check(t_color *coloring);
-void		phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *draw);
+void	cylinder_tangent_plane(t_meet meet_point, t_point *nor_vec, t_minirt info);
+double	get_alpha(t_meet meet_point, t_minirt info);
+void	cone_tangent_plane(t_meet meet_point, t_point *nor_vec, t_minirt info);
+t_point	*ft_normal_vec(t_meet meet_point, t_minirt info);
 
 #endif
