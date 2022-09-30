@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:48:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 15:18:43 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 19:01:10 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	set_light(char **list, t_minirt *info, int *count)
 	info->necessity.light->_switch = ON;
 }
 
-void	set_sphere(char **list, t_object *object, int *count)
+void	set_sphere(char **list, t_object **object, int *count)
 {
 	t_sphere	*new;
 
@@ -70,10 +70,10 @@ void	set_sphere(char **list, t_object *object, int *count)
 	new->color.red = ft_atoi(list[5]);
 	new->color.green = ft_atoi(list[6]);
 	new->color.blue = ft_atoi(list[7]);
-	object = (void *)new;
-	object->object_type = SPHERE;
-	object->next = new_object();
-	object = object->next;
+	(*object)->object = (void *)new;
+	(*object)->object_type = SPHERE;
+	(*object)->next = new_object();
+	(*object) = (*object)->next;
 }
 
 void	set_upper_cent(t_cylinder *cylinder)
@@ -85,7 +85,7 @@ void	set_upper_cent(t_cylinder *cylinder)
 	vec_plus_vec(temp, cylinder->under_cent, &(cylinder->upper_cent));
 }
 
-void	set_cylinder(char **list, t_object *object, int *count)
+void	set_cylinder(char **list, t_object **object, int *count)
 {
 	t_cylinder	*new;
 
@@ -104,13 +104,13 @@ void	set_cylinder(char **list, t_object *object, int *count)
 	new->color.green = ft_atoi(list[10]);
 	new->color.blue = ft_atoi(list[11]);
 	set_upper_cent(new);
-	object = (void *)new;
-	object->object_type = CYLINDER;
-	object->next = new_object();
-	object = object->next;
+	(*object)->object = (void *)new;
+	(*object)->object_type = CYLINDER;
+	(*object)->next = new_object();
+	(*object) = (*object)->next;
 }
 
-void	set_plane(char **list, t_object *object, int *count)
+void	set_plane(char **list, t_object **object, int *count)
 {
 	t_plane	*new;
 
@@ -126,13 +126,13 @@ void	set_plane(char **list, t_object *object, int *count)
 	new->color.red = ft_atoi(list[7]);
 	new->color.green = ft_atoi(list[8]);
 	new->color.blue = ft_atoi(list[9]);
-	object = (void *)new;
-	object->object_type = PLANE;
-	object->next = new_object();
-	object = object->next;
+	(*object)->object = (void *)new;
+	(*object)->object_type = PLANE;
+	(*object)->next = new_object();
+	(*object) = (*object)->next;
 }
 
-void	set_cone(char **list, t_object *object, int *count)
+void	set_cone(char **list, t_object **object, int *count)
 {
 	t_cylinder	*new;
 
@@ -150,8 +150,8 @@ void	set_cone(char **list, t_object *object, int *count)
 	new->color.red = ft_atoi(list[9]);
 	new->color.green = ft_atoi(list[10]);
 	new->color.blue = ft_atoi(list[11]);
-	object = (void *)new;
-	object->object_type = CONE;
-	object->next = new_object();
-	object = object->next;
+	(*object)->object = (void *)new;
+	(*object)->object_type = CONE;
+	(*object)->next = new_object();
+	(*object) = (*object)->next;
 }

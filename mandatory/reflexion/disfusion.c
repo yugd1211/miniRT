@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:40:07 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:40:35 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 19:56:48 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ double	coef_disfusion_reflex(t_meet meet_point, t_light light, t_point nor_vec)
 	t_point	light_vec;
 	double	k_b;
 
-	k_b = pow(distance(light.light_point, meet_point.meet), 1.5);
+	// k_b = pow(distance(light.light_point, meet_point.meet), 1.5);
+	k_b = 1;
 	vec_minus_vec(light.light_point, meet_point.meet, &light_vec);
 	set_unit_vec(&light_vec);
 	return (dot_product(light_vec, nor_vec) * light.brightness_ratio * k_b);

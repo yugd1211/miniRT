@@ -6,13 +6,13 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 15:27:51 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 18:58:06 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	set_object(char *temp, t_minirt *info, t_object *temp_obj)
+int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 {
 	char	**temp_list;
 	int		count;
@@ -34,8 +34,6 @@ int	set_object(char *temp, t_minirt *info, t_object *temp_obj)
 		set_cylinder(temp_list, temp_obj, &count);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
 		set_cone(temp_list, temp_obj, &count);
-	else
-		return (-1);
 	return (0);
 }
 
@@ -56,11 +54,11 @@ int	place_objects(char **argv, t_minirt *info)
 		return (-1);
 	while (temp != NULL)
 	{
-		if (set_object(temp, info, temp_obj) == -1)
-			return (-1);
+		set_object(temp, info, &(info->head));
 		free(temp);
 		temp = get_next_line(fd);
 	}
+	info->head = temp_obj;
 	if (check_necessity(info->necessity) == -1)
 		return (-1);
 	close(fd);

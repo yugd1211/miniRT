@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:05 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/27 15:49:07 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 19:04:39 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_object	*new_object(void)
 	new = malloc(sizeof(t_object));
 	if (!new)
 		return (NULL);
+	new->object_type = NONE;
 	new->object = NULL;
 	new->next = NULL;
 	return (new);

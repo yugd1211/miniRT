@@ -6,11 +6,19 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 19:27:01 by sielee            #+#    #+#             */
-/*   Updated: 2022/09/30 16:33:06 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:50:57 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
 
 void	ft_set_mlx_data(t_window *win)
 {
@@ -29,12 +37,6 @@ void	ft_init_mlx_img(t_window *win)
 	win->mlx_data.addr = mlx_get_data_addr(win->mlx_data.img, \
 	&(win->mlx_data).bits_per_pixel, &win->mlx_data.line_length, \
 	&(win->mlx_data).endian);
-	for (int i = 0 ; i < 500; i++)
-	{
-		for (int j = 0; j < 500; j++)
-			mlx_pixel_put(win->mlx, win->mlx_win, i, j, 0x00FF0000);
-	}
-	ft_on_screen(win);
 }
 
 void	ft_on_screen(t_window *win)

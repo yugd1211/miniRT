@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:57:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:42:22 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 17:57:28 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	color_set(t_phong *draw)
 {
-	draw->color = draw->coloring.red << 16 | draw->coloring.green << 8 | draw->coloring.blue;
+	draw->color = 0 << 24 | draw->coloring.red << 16 | draw->coloring.green << 8 | draw->coloring.blue;
 }
 
 void	over_color_check(t_color *coloring)

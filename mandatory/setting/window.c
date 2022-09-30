@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 16:07:22 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 18:00:44 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_set_top_left(t_minirt *info, t_point cent_vec)
 	set_unit_vec(&(info->screen.vertical_vec));
 	temp_horizon = info->screen.holizon_vec;
 	temp_vertical = info->screen.vertical_vec;
-	n_multi_vec((info->window.win_size[WIDTH] / 2) * -1, &temp_horizon);
+	n_multi_vec((info->window.win_size[WIDTH] / 2), &temp_horizon);
 	n_multi_vec((info->window.win_size[HEIGHT] / 2), &temp_vertical);
 	vec_plus_vec(cent_vec, temp_horizon, &(info->screen.top_left));
 	vec_plus_vec(info->screen.top_left, temp_vertical, &(info->screen.top_left));
@@ -59,7 +59,7 @@ void	ft_set_screen(t_minirt *info)
 	t_point temp;
 
 	plane_point_dis = (info->window.win_size[WIDTH] / 2) \
-	/ tan(info->necessity.camera.fow);
+	/ tan(info->necessity.camera.fow / 2);
 	set_unit_vec(&(info->necessity.camera.normal_vec));
 	temp = info->necessity.camera.normal_vec;
 	n_multi_vec(plane_point_dis, &temp);
@@ -71,26 +71,27 @@ void	ft_window(t_minirt *info)
 	int		x;
 	int		y;
 	t_line	line;
+	t_point	temp_y;
+	t_point	draw;
 
 	y = 0;
 	line.start_point = info->necessity.camera.view_point;
 	ft_set_screen(info);
+	draw = info->screen.top_left;
 	while (y < info->window.win_size[HEIGHT])
 	{
 		x = 0;
 		while (x < info->window.win_size[WIDTH])
 		{
-			vec_minus_vec(info->screen.top_left, info->necessity.camera.view_point, &(line.dir_vec));
+			vec_minus_vec(draw, info->necessity.camera.view_point, &(line.dir_vec));
 			ft_color(*info, line, x, y);
 			x++;
-			vec_plus_vec(info->screen.top_left, info->screen.holizon_vec, &(info->screen.top_left));
+			vec_minus_vec(draw, info->screen.holizon_vec, &(draw));
 		}
 		y++;
-		vec_minus_vec(info->screen.top_left, info->screen.vertical_vec, &(info->screen.top_left));
-	}
-	for (int i = 0 ; i < 100; i++)
-	{
-		mlx_pixel_put(info->window.mlx, info->window.mlx_win, i + 500, i + 400, 0xFFFFFF);
+		temp_y = info->screen.vertical_vec;
+		n_multi_vec(y, &temp_y);
+		vec_minus_vec(info->screen.top_left, temp_y, &(draw));
 	}
 	ft_on_screen(&(info->window));
 }

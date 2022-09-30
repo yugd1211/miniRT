@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:44 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:59:49 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 17:12:47 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	n_multi_vec(double n, t_point *p)
 
 void	vec_plus_vec(t_point p1, t_point p2, t_point *ans)
 {
-	ans->x = p1.x + p2.y;
+	ans->x = p1.x + p2.x;
 	ans->y = p1.y + p2.y;
 	ans->z = p1.z + p2.z;
 }
 
 void	vec_minus_vec(t_point p1, t_point p2, t_point *ans)
 {
-	ans->x = p1.x - p2.y;
+	ans->x = p1.x - p2.x;
 	ans->y = p1.y - p2.y;
 	ans->z = p1.z - p2.z;
 }

@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 15:11:35 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 20:01:13 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 		return ;
 	else
 	{
-		meet->temp_t = dot_product(plane->normal_vec, plane->in_plain) - \
-		dot_product(plane->normal_vec, line.start_point) / \
+		meet->temp_t = (dot_product(plane->normal_vec, plane->in_plain) - \
+		dot_product(plane->normal_vec, line.start_point))/ \
 		dot_product(plane->normal_vec, line.dir_vec);
-		if (meet->temp_t > 0 && meet->parm_t > meet->temp_t)
+		if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		{
 			meet->parm_t = meet->temp_t;
 			meet->meet = line.dir_vec;
@@ -75,18 +75,12 @@ void	sphere_meet(t_object object, t_meet *meet, t_line line)
 	coef.b = dot_product(line.dir_vec, temp_vec);
 	coef.c = dot_product(temp_vec, temp_vec) - square(sphere->diameter);
 	coef.discriminant = coef.b * coef.b - coef.a * coef.c;
-	if (coef.discriminant < 0 || sqrt(coef.discriminant) - coef.b < 0)
+	if (coef.discriminant < 0)
 		return ;
-	else if (sqrt(coef.discriminant) * -1 - coef.b < 0)
-	{
-		meet->temp_t = (sqrt(coef.discriminant) - coef.b) / coef.a;
-		if (meet->parm_t > meet->temp_t)
-			renew_parm_t(object, meet, line, SPHERE);
-	}
-	else
-	{
-		meet->temp_t = sqrt(coef.discriminant) * -1 - coef.b / coef.a;
-		if (meet->parm_t > meet->temp_t)
-			renew_parm_t(object, meet, line, SPHERE);
-	}
+	meet->temp_t = (sqrt(coef.discriminant) - coef.b) / coef.a;
+	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+		renew_parm_t(object, meet, line, SPHERE);
+	meet->temp_t = sqrt(coef.discriminant) * -1 - coef.b / coef.a;
+	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+		renew_parm_t(object, meet, line, SPHERE);
 }

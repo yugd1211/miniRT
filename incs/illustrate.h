@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:27:18 by sielee            #+#    #+#             */
-/*   Updated: 2022/09/30 16:19:27 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:51:12 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		ft_event_red_cross(int keycode);
 void	ft_init_mlx_img(t_window *win);
 void	ft_set_mlx_data(t_window *win);
 void	ft_on_screen(t_window *win);
+void	my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
 
 #endif

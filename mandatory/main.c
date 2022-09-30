@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:49 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 16:12:38 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:51:43 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int main(int ac, char *av[])
 	if (place_objects(av, &info) == -1)
 		ft_error(NULL);
 	ft_set_mlx_data(&(info.window));
-	// ft_window(&info);
+	ft_window(&info);
 	return (EXIT_SUCCESS);
 }

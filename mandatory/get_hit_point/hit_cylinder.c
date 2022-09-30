@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:47:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 15:12:01 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 19:37:00 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 		return ;
 	//원기둥 몸통//
 	meet->temp_t = (coef.b * -1 + sqrt(coef.discriminant)) / coef.a;
-	if (ret_min(coef.max, coef.min) <= meet->temp_t && meet->temp_t <= ret_max(coef.max, coef.min) && meet->temp_t > 0 && meet->parm_t > meet->temp_t)
+	if (ret_min(coef.max, coef.min) <= meet->temp_t && meet->temp_t <= ret_max(coef.max, coef.min) && meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		renew_parm_t(object, meet, line, CYLINDER);
 	meet->temp_t = (coef.b * -1 - sqrt(coef.discriminant)) / coef.a;
-	if (ret_min(coef.max, coef.min) <= meet->temp_t && meet->temp_t <= ret_max(coef.max, coef.min) && meet->temp_t > 0 && meet->parm_t > meet->temp_t)
+	if (ret_min(coef.max, coef.min) <= meet->temp_t && meet->temp_t <= ret_max(coef.max, coef.min) && meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		renew_parm_t(object, meet, line, CYLINDER);
 	//원기둥 윗면//
 	temp_vec = line.dir_vec;
