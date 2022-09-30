@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 19:27:01 by sielee            #+#    #+#             */
-/*   Updated: 2022/09/30 16:21:01 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:33:06 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	ft_init_mlx_img(t_window *win)
 	win->mlx_data.addr = mlx_get_data_addr(win->mlx_data.img, \
 	&(win->mlx_data).bits_per_pixel, &win->mlx_data.line_length, \
 	&(win->mlx_data).endian);
-	for (int i = 0 ; i < 1000; i++)
+	for (int i = 0 ; i < 500; i++)
 	{
-		for (int j = 0; j < 1000; j++)
-			mlx_pixel_put(win->mlx, win->mlx_win, i, j, 0xFFFFFF);
+		for (int j = 0; j < 500; j++)
+			mlx_pixel_put(win->mlx, win->mlx_win, i, j, 0x00FF0000);
 	}
 	ft_on_screen(win);
 }

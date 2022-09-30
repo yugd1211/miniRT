@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 15:12:20 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:36:09 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include "illustrate.h"
-# include <../libmlx/mlx.h>
+# include <mlx.h>
 
 typedef enum e_switch
 {
