@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:47:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:48:39 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 15:12:01 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 	t_cylinder		*cylinder;
 	t_point			temp_vec;
 	t_formula_coef	coef;
-	t_solution		solution;
 
 	cylinder = (t_cylinder *)(object.object);
 	set_unit_vec(&(cylinder->normal_vec));

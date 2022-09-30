@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:27:18 by sielee            #+#    #+#             */
-/*   Updated: 2022/09/14 20:17:55 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:19:27 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ typedef struct	s_window
 int		ft_key_press(int keycode, t_window *win);
 int		ft_event_red_cross(int keycode);
 void	ft_init_mlx_img(t_window *win);
+void	ft_set_mlx_data(t_window *win);
+void	ft_on_screen(t_window *win);
 
 #endif

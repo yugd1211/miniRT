@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "utils.h": "c",
-        "minirt.h": "c"
+        "minirt.h": "c",
+        "unistd.h": "c",
+        "stdlib.h": "c",
+        "math.h": "c",
+        "fcntl.h": "c",
+        "illustrate.h": "c"
     }
 }

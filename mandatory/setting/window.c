@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 19:03:41 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:07:22 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	ft_window(t_minirt *info)
 
 	y = 0;
 	line.start_point = info->necessity.camera.view_point;
-    ft_init_mlx_img(&(info->window));
 	ft_set_screen(info);
 	while (y < info->window.win_size[HEIGHT])
 	{
@@ -89,4 +88,9 @@ void	ft_window(t_minirt *info)
 		y++;
 		vec_minus_vec(info->screen.top_left, info->screen.vertical_vec, &(info->screen.top_left));
 	}
+	for (int i = 0 ; i < 100; i++)
+	{
+		mlx_pixel_put(info->window.mlx, info->window.mlx_win, i + 500, i + 400, 0xFFFFFF);
+	}
+	ft_on_screen(&(info->window));
 }

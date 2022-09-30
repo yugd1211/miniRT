@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 20:04:49 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 16:12:38 by iyun             ###   ########seoul.kr  */
+/*   Created: 2021/09/20 16:10:38 by iyun              #+#    #+#             */
+/*   Updated: 2022/09/30 15:08:58 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int main(int ac, char *av[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_minirt	info;
+	unsigned int	index;
+	unsigned char	*cp1;
+	unsigned char	*cp2;
 
-	info.necessity.ambient._switch = OFF;
-	info.necessity.camera._switch = OFF;
-	info.necessity.light = new_light();
-	info.head = new_object();
-	if (ac != 2)
-		ft_error("Wrong ARG");
-	if (place_objects(av, &info) == -1)
-		ft_error(NULL);
-	ft_set_mlx_data(&(info.window));
-	// ft_window(&info);
-	return (EXIT_SUCCESS);
+	cp1 = (unsigned char *)s1;
+	cp2 = (unsigned char *)s2;
+	index = 0;
+	while (cp1[index] != '\0' && index < n)
+	{
+		if (cp1[index] != cp2[index])
+		{
+			return (cp1[index] - s2[index]);
+		}
+		index++;
+	}
+	if (cp1[index] == '\0' && index < n)
+	{
+		return (cp1[index] - cp2[index]);
+	}
+	return (0);
 }

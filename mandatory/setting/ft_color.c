@@ -6,13 +6,13 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:50:00 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 16:06:41 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
+void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 {
 	t_object	*temp_object;
 	t_light		*temp_light;

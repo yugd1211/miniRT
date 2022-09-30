@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/27 15:49:01 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 15:27:51 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	set_object(char *temp, t_minirt *info, t_object *temp_obj)
 		set_sphere(temp_list, temp_obj, &count);
 	else if (ft_strncmp(temp_list[0], "pl", ft_strlen("pl") + 1) == 0)
 		set_plane(temp_list, temp_obj, &count);
-	else if (ft_strncmp(temp_list[0], "cl", ft_strlen("cl") + 1) == 0)
+	else if (ft_strncmp(temp_list[0], "cy", ft_strlen("cy") + 1) == 0)
 		set_cylinder(temp_list, temp_obj, &count);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
 		set_cone(temp_list, temp_obj, &count);

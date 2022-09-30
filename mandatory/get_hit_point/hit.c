@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 19:12:27 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 15:11:35 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_meet	*new_meet(t_minirt info)
 	new->object = NULL;
 	new->parm_t = 0;
 	new->meet = info.necessity.camera.view_point;
+	return (new);
 }
 
 void	plane_meet(t_object object, t_meet *meet, t_line line)

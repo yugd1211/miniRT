@@ -6,7 +6,7 @@
 #    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/09/29 19:32:28 by iyun             ###   ########seoul.kr   #
+#    Updated: 2022/09/30 15:19:07 by iyun             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,22 @@ INC_DIR			=	incs
 SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/utils/check_necessity.c mandatory/utils/color_utils.c \
 					mandatory/utils/ft_atof.c mandatory/utils/ft_atoi.c \
-					mandatory/utils/ft_error.c mandatory/utils/ft_spilt.c \
+					mandatory/utils/ft_error.c mandatory/utils/ft_split.c \
 					mandatory/utils/product.c mandatory/utils/utils1.c \
 					mandatory/utils/utils2.c mandatory/utils/vec_utils.c \
+					mandatory/utils/ft_strncmp.c \
 					mandatory/setting/ft_color.c mandatory/setting/new_malloc.c \
 					mandatory/setting/parse.c mandatory/setting/window.c \
+					mandatory/setting/setting.c \
 					mandatory/reflexion/ambient.c mandatory/reflexion/disfusion.c \
 					mandatory/reflexion/light_view_correlation.c \
-					mandatory/reflexion/phong_reflexion.c \
+					mandatory/reflexion/phong_reflextion.c \
 					mandatory/reflexion/specular.c \
 					mandatory/illustrate/event_exit.c mandatory/illustrate/visual.c \
 					mandatory/get_hit_point/hit.c mandatory/get_hit_point/hit_cylinder.c \
-					mandatory/get_hit_point/hit_cone.c
+					mandatory/get_hit_point/hit_cone.c \
+					get_next_line/get_next_line_utils.c \
+					get_next_line/get_next_line.c
 OBJS			= $(SRCS:.c=.o)
 
 BONUS_SRCS		=	bonus/ft_atoi_bonus.c bonus/ft_split_bonus.c bonus/ft_split_size_bonus.c \
@@ -39,11 +43,14 @@ BONUS_OBJS		= $(BONUS_SRCS:.c=.o)
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g
 
-NAME			= fdf
+NAME			= minirt
 
 all:			$(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $^ -o $@
 
 ifdef 			WITH_BONUS
     			OBJECTS = $(BONUS_OBJS)
@@ -52,7 +59,7 @@ else
 endif
 
 $(NAME):		$(OBJECTS)
-				$(CC) -I$(INC_DIR) -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS)
+				$(CC) -I /usr/local/include/ -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(OBJECTS)
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)

@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:49:20 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 19:32:54 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/09/30 15:12:09 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	cone_meet(t_object object, t_meet *meet, t_line line)
 	t_cylinder		*cone;
 	t_point			temp_vec;
 	t_formula_coef	coef;
-	t_solution		solution;
 	double			temp;
 
 	cone = (t_cylinder *)(object.object);
