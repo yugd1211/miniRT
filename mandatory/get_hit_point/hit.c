@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 20:01:13 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 17:06:10 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 
 	plane = (t_plane *)(object.object);
 	set_unit_vec(&(plane->normal_vec));
-	if (dot_product(plane->normal_vec, line.dir_vec) == 0)
+	if (ft_equal(dot_product(plane->normal_vec, line.dir_vec), 0.00) == 0)
 		return ;
 	else
 	{
@@ -74,13 +74,13 @@ void	sphere_meet(t_object object, t_meet *meet, t_line line)
 	vec_minus_vec(line.start_point, sphere->center, &temp_vec);
 	coef.b = dot_product(line.dir_vec, temp_vec);
 	coef.c = dot_product(temp_vec, temp_vec) - square(sphere->diameter);
-	coef.discriminant = coef.b * coef.b - coef.a * coef.c;
-	if (coef.discriminant < 0)
+	coef.discriminant = square(coef.b) - coef.a * coef.c;
+	if (coef.discriminant < 0.00000000)
 		return ;
 	meet->temp_t = (sqrt(coef.discriminant) - coef.b) / coef.a;
 	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		renew_parm_t(object, meet, line, SPHERE);
-	meet->temp_t = sqrt(coef.discriminant) * -1 - coef.b / coef.a;
+	meet->temp_t = (sqrt(coef.discriminant) * -1 - coef.b) / coef.a;
 	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		renew_parm_t(object, meet, line, SPHERE);
 }

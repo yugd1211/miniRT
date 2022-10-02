@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   equal.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 18:57:55 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 19:38:48 by iyun             ###   ########seoul.kr  */
+/*   Created: 2022/10/02 16:21:38 by iyun              #+#    #+#             */
+/*   Updated: 2022/10/02 17:40:56 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	ret_max(double a, double b)
+int	ft_equal(double num1, double num2)
 {
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-double	ret_min(double a, double b)
-{
-	if (a > b)
-		return (b);
-	return (a);
-}
-
-int	ft_distance(t_meet meet_point, t_line line, t_light light)
-{
-	double	dist;
-
-	dist = distance(meet_point.meet, light.light_point);
-	return (dist / sqrt(dot_product(line.dir_vec, line.dir_vec)));
+	if (ft_abs(num1 - num2) < 0.000005)
+		return (0);
+	return (1);
 }

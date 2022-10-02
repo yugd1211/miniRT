@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 19:13:23 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 20:11:39 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *d
 	correlation = ft_correlation(meet_point, light, info, *normal_vec);
 	if (correlation == OUT_OUT || correlation == IN_IN)
 	{
-		disfusion_reflex(coef_disfusion_reflex(meet_point, light, *normal_vec), draw->obj_color, light.color, &(draw->coloring));
+		disfusion_reflex(coef_disfusion_reflex(meet_point, light, *normal_vec), draw->obj_color, &(draw->coloring));
 		specular_reflex(coef_specular_reflex(meet_point, light, info, *normal_vec), light.color, &(draw->coloring));
 	}
 	free(normal_vec);
-} // 빛과 오브젝트 사이에 임의의 오브젝트가 없음
+}

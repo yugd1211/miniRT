@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 20:49:26 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 19:52:30 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 	line.start_point = meet_point.meet;
 	temp_object = info.head;
 	temp_light = info.necessity.light;
-	ambient_reflex(coef_ambient_reflex(info), draw->obj_color, &(draw->obj_color));
+	ambient_reflex(coef_ambient_reflex(info), draw->obj_color, &(draw->coloring));
 	while (temp_light != NULL)
 	{
 		meet = new_meet(info);
@@ -40,16 +40,14 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 				cone_meet(*temp_object, meet, line);
 			else
 				ft_error("Wrong object");
-			if (meet->parm_t > 0 && meet->parm_t <= ft_distance(meet_point, line, *temp_light))
+			if (meet->parm_t > 0 && meet->parm_t <= distance(meet_point.meet, temp_light->light_point))
 				break ;
 			temp_object = temp_object->next;
 		}
-		if (meet->parm_t == 0.00000000 || meet->parm_t > ft_distance(meet_point, line, *temp_light))
-		{
-			draw->coloring = draw->obj_color;
-			// phong_reflexion(meet_point, *temp_light, info, draw);
-		}
+		if (meet->parm_t == 0.00000000 || meet->parm_t > distance(meet_point.meet, temp_light->light_point))
+			phong_reflexion(meet_point, *temp_light, info, draw);
 		free(meet);
+		// draw->coloring = draw->obj_color;
 		temp_light = temp_light->next;
 	}
 }//광원과 오브젝 사이에 임의의 오브젝이 있는지 검사;
@@ -77,7 +75,7 @@ void	ft_color(t_minirt info, t_line line, int x, int y)
 			ft_error("Wrong object");
 		temp_object = temp_object->next;
 	}
-	if (meet->parm_t == 0.00000000)
+	if (ft_equal(meet->parm_t, 0.00) == 0)
 		ambient_light(info, &draw);//주변광
 	else if (meet->parm_t > 0.00000000)
 	{
