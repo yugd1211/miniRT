@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:41:21 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 20:25:08 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 20:59:24 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double	coef_specular_reflex(t_meet meet_point, t_light light, t_minirt info, t_p
 
 void	specular_reflex(double coef, t_color light, t_color *coloring)
 {
-	coloring->red += lround(coef * light.red);
-	coloring->green += lround(coef * light.green);
-	coloring->blue += lround(coef * light.blue);
+	coloring->red += lround(coef * (double)(light.red));
+	coloring->green += lround(coef * (double)(light.green));
+	coloring->blue += lround(coef * (double)(light.blue));
 }

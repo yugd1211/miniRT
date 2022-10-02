@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:40:07 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 20:27:32 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 20:58:58 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	coef_disfusion_reflex(t_meet meet_point, t_light light, t_point nor_vec)
 
 void	disfusion_reflex(double coef, t_color obj_color, t_color *coloring)
 {
-	coloring->red += lround(coef * obj_color.red);
-	coloring->green += lround(coef * obj_color.green);
-	coloring->blue += lround(coef * obj_color.blue);
+	coloring->red += lround(coef * (double)(obj_color.red));
+	coloring->green += lround(coef * (double)(obj_color.green));
+	coloring->blue += lround(coef * (double)(obj_color.blue));
 }

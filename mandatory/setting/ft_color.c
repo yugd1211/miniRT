@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 19:52:30 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/02 21:11:27 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 				break ;
 			temp_object = temp_object->next;
 		}
-		if (meet->parm_t == 0.00000000 || meet->parm_t > distance(meet_point.meet, temp_light->light_point))
+		if (meet->parm_t <= 0.00000000 || meet->parm_t > distance(meet_point.meet, temp_light->light_point))
 			phong_reflexion(meet_point, *temp_light, info, draw);
 		free(meet);
 		// draw->coloring = draw->obj_color;
