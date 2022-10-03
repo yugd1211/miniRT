@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:47:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 18:56:36 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 15:54:19 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 		temp_vec = line.dir_vec;
 		n_multi_vec(coef.max, &temp_vec);
 		vec_plus_vec(temp_vec, line.start_point, &temp_vec);
+		meet->temp_t = coef.max;
 		if (distance(temp_vec, cylinder->upper_cent) <= cylinder->diameter && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		{
 			meet->parm_t = coef.max;
@@ -54,6 +55,7 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 		temp_vec = line.dir_vec;
 		n_multi_vec(coef.min, &temp_vec);
 		vec_plus_vec(temp_vec, line.start_point, &temp_vec);
+		meet->temp_t = coef.min;
 		if (distance(temp_vec, cylinder->under_cent) <= cylinder->diameter && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
 		{
 			meet->parm_t = coef.min;

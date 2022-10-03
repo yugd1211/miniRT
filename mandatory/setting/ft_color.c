@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 21:11:27 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 17:07:20 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 	t_line		line;
 
 	line.start_point = meet_point.meet;
-	temp_object = info.head;
 	temp_light = info.necessity.light;
 	ambient_reflex(coef_ambient_reflex(info), draw->obj_color, &(draw->coloring));
 	while (temp_light != NULL)
 	{
+		temp_object = info.head;
 		meet = new_meet(info);
 		vec_minus_vec(info.necessity.light->light_point, meet_point.meet, &(line.dir_vec));
 		set_unit_vec(&(line.dir_vec));
@@ -44,10 +44,9 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 				break ;
 			temp_object = temp_object->next;
 		}
-		if (meet->parm_t <= 0.00000000 || meet->parm_t > distance(meet_point.meet, temp_light->light_point))
+		if (meet->parm_t <= 0.00000001 || meet->parm_t > distance(meet_point.meet, temp_light->light_point))
 			phong_reflexion(meet_point, *temp_light, info, draw);
 		free(meet);
-		// draw->coloring = draw->obj_color;
 		temp_light = temp_light->next;
 	}
 }//광원과 오브젝 사이에 임의의 오브젝이 있는지 검사;

@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 16:21:38 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 17:40:56 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 15:29:41 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_equal(double num1, double num2)
 {
-	if (ft_abs(num1 - num2) < 0.000005)
+	if (ft_abs(num1 - num2) <= 0.00000001)
 		return (0);
 	return (1);
 }

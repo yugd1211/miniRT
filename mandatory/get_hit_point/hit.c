@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 20:54:54 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 16:51:44 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_meet	*new_meet(t_minirt info)
 	if (!new)
 		ft_error("Wrong malloc");
 	new->object = NULL;
-	new->parm_t = 0;
+	new->parm_t = 0.00000000;
 	new->meet = info.necessity.camera.view_point;
 	return (new);
 }
@@ -42,14 +42,14 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 
 	plane = (t_plane *)(object.object);
 	set_unit_vec(&(plane->normal_vec));
-	if (ft_equal(dot_product(plane->normal_vec, line.dir_vec), 0.00) == 0)
+	if (ft_equal(dot_product(plane->normal_vec, line.dir_vec), 0.00000000) == 0)
 		return ;
 	else
 	{
 		meet->temp_t = (dot_product(plane->normal_vec, plane->in_plain) - \
-		dot_product(plane->normal_vec, line.start_point))/ \
+		dot_product(plane->normal_vec, line.start_point)) / \
 		dot_product(plane->normal_vec, line.dir_vec);
-		if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+		if (meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t || ft_equal(meet->parm_t, 0.00000000) == 0))
 		{
 			meet->parm_t = meet->temp_t;
 			meet->meet = line.dir_vec;
