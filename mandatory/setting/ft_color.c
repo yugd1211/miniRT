@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/03 17:07:20 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 17:14:58 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 	{
 		temp_object = info.head;
 		meet = new_meet(info);
-		vec_minus_vec(info.necessity.light->light_point, meet_point.meet, &(line.dir_vec));
+		vec_minus_vec(temp_light->light_point, meet_point.meet, &(line.dir_vec));
 		set_unit_vec(&(line.dir_vec));
 		while (temp_object->object != NULL)
 		{
