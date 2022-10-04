@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 19:43:48 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/04 20:31:14 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_point	bmp(t_point	nor_vec, t_meet meet_point, t_minirt info)
 	t_point	tangent;
 	t_point	bitangent;
 
-	if (vec3_to_uv(meet_point, &u, &v, info) == 0.00000000)
+	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
 		u *= (double)info.bmp.width;
 		v *= (double)info.bmp.height;
@@ -43,7 +43,8 @@ t_point	bmp(t_point	nor_vec, t_meet meet_point, t_minirt info)
 	new_nor_vec.x = (tangent.x * meet_point.meet.x + bitangent.x * meet_point.meet.y + nor_vec.x * meet_point.meet.z);
 	new_nor_vec.y = (tangent.y * meet_point.meet.x + bitangent.y * meet_point.meet.y + nor_vec.y * meet_point.meet.z);
 	new_nor_vec.z = (tangent.z * meet_point.meet.x + bitangent.z * meet_point.meet.y + nor_vec.z * meet_point.meet.z);
-	printf("x = %lf, y = %lf, z = %lf\n", new_nor_vec.x, new_nor_vec.y, new_nor_vec.z);
+	set_unit_vec(&new_nor_vec);
+	// printf("x = %lf, y = %lf, z = %lf\n", new_nor_vec.x, new_nor_vec.y, new_nor_vec.z);
 	return (new_nor_vec);
 }
 
@@ -57,7 +58,6 @@ void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *d
 	*normal_vec = bmp(*normal_vec, meet_point, info);
 	// printf("x = %lf, y = %lf, z = %lf\n", normal_vec->x, normal_vec->y, normal_vec->z);
 	
-	set_unit_vec(normal_vec);
 	correlation = ft_correlation(meet_point, light, info, *normal_vec);
 	if (correlation == OUT_OUT || correlation == IN_IN)
 	{
