@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 04:08:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 14:12:03 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ typedef struct s_minirt
 	t_window	window;
 	t_screen	screen;
 	t_mlx_data	img;
+	t_mlx_data	bmp;
 	int			*int_color;
+	int			*int_bmp;
 }	t_minirt;
 
 typedef struct s_line
@@ -255,5 +257,7 @@ char	*ret_line(char **backup);
 char	*get_next_line(int fd);
 t_color img_overay(t_meet meet_point, t_minirt info);
 t_color checkerboard(t_meet meet_point, t_minirt info);
+void	get_color(int rgb, t_color *color);
+int vec3_to_uv(t_meet meet_point, double *u, double *v, t_minirt info);
 
 #endif

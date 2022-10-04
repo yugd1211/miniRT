@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:22:33 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 13:39:33 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 14:30:05 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ t_color img_overay(t_meet meet_point, t_minirt info)
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		u *= (double)info.img.width / 15;
-		v *= (double)info.img.height / 30;
+		u *= (double)info.img.width;
+		v *= (double)info.img.height;
 		get_color(info.int_color[lround(v) * info.img.width + lround(u)], &color);
 	}
 	else
