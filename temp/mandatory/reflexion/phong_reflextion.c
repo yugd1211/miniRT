@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_reflextion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 14:30:17 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 16:39:33 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ t_point	bmp(t_point	nor_vec, t_meet meet_point, t_minirt info)
 	{
 		u *= (double)info.bmp.width;
 		v *= (double)info.bmp.height;
-
-		get_color((info.int_bmp[lround(v) * info.bmp.width + lround(u)] * 2) - 1, &bmp);
+		// get_color((info.int_bmp[lround(v) * info.bmp.width + lround(u)] * 2) - 1, &bmp);
+		get_color(info.int_bmp[lround(v) * info.bmp.width + lround(u)], &bmp);
 	}
-	else
-		new_nor_vec = nor_vec;
-	temp.x = (double)(bmp.red);
-	temp.y = (double)(bmp.green);
-	temp.z = (double)(bmp.blue);
+	// else
+	// 	new_nor_vec = nor_vec;
+	// printf("x = %d, y = %d, z = %d\n", bmp.red, bmp.green, bmp.blue);
+	temp.x = (double)(bmp.red * 2 - 1);
+	temp.y = (double)(bmp.green * 2 - 1);
+	temp.z = (double)(bmp.blue * 2 - 1);
 	cross_product(nor_vec, temp, &tangent);
 	cross_product(tangent, nor_vec, &bitangent);
 	new_nor_vec.x = (tangent.x * meet_point.meet.x + bitangent.x * meet_point.meet.y + nor_vec.x * meet_point.meet.z);
@@ -46,7 +47,6 @@ void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *d
 {
 	t_point						*normal_vec;
 	t_light_view_correlation	correlation;
-
 	t_color						obj_changer;
 
 	normal_vec = ft_normal_vec(meet_point, info);

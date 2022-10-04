@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 14:12:03 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 16:48:11 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ typedef enum e_type
 	NONE
 }	t_type;
 
+typedef enum e_texture_type
+{
+	RGB = 0,
+	CHECKER_BOARD,
+	BUMP_MAP
+} t_texture_type;
+
 typedef struct s_color
 {
 	int	red;
@@ -91,26 +98,41 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_point	center;
-	double	diameter;
-	t_color	color;
+	t_point			center;
+	double			diameter;
+	t_texture_type	text_type;
+	t_color			color;
+	char			*img_name;
+	char			*normal_img_name;
+	int				check_width;
+	int				check_height;
 }	t_sphere;
 
 typedef	struct s_plane
 {
-	t_point	in_plain;
-	t_point	normal_vec;
-	t_color	color;
+	t_point			in_plain;
+	t_point			normal_vec;
+	t_texture_type	text_type;
+	t_color			color;
+	char			*img_name;
+	char			*normal_img_name;
+	int				check_width;
+	int				check_height;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	double	diameter;
-	double	height;
-	t_point	under_cent;
-	t_point	upper_cent;
-	t_point	normal_vec;
-	t_color	color;
+	double			diameter;
+	double			height;
+	t_point			under_cent;
+	t_point			upper_cent;
+	t_point			normal_vec;
+	t_texture_type	text_type;
+	t_color			color;
+	char			*img_name;
+	char			*normal_img_name;
+	int				check_width;
+	int				check_height;
 }	t_cylinder;
 
 typedef struct s_necessity

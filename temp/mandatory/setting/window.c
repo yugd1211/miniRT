@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 14:29:53 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 18:31:29 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	ft_window(t_minirt *info)
 	info->int_color = (int *)mlx_get_data_addr(info->img.img, \
 	&info->img.bits_per_pixel, &info->img.line_length, \
 	&info->img.endian);
-
 	info->bmp.img = mlx_xpm_file_to_image(info->window.mlx, "nomalmap.xpm",
 			&info->bmp.width, &info->bmp.height);
 	info->int_bmp = (int *)mlx_get_data_addr(info->bmp.img, \
