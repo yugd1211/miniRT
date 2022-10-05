@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 05:37:26 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 19:02:55 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,16 @@ void	ft_window(t_minirt *info)
 	ft_set_screen(info);
 	draw = info->screen.top_left;
 
-	info->img.img = mlx_xpm_file_to_image(info->window.mlx, "map-of-the-world.xpm",
+	info->img.img = mlx_xpm_file_to_image(info->window.mlx, "africa.xpm",
 			&info->img.width, &info->img.height);
 	info->int_color = (int *)mlx_get_data_addr(info->img.img, \
 	&info->img.bits_per_pixel, &info->img.line_length, \
 	&info->img.endian);
+	info->bmp.img = mlx_xpm_file_to_image(info->window.mlx, "nomalmap.xpm",
+			&info->bmp.width, &info->bmp.height);
+	info->int_bmp = (int *)mlx_get_data_addr(info->bmp.img, \
+	&info->bmp.bits_per_pixel, &info->bmp.line_length, \
+	&info->bmp.endian);
 
 	while (y < info->window.win_size[HEIGHT])
 	{

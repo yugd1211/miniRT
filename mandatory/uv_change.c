@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:22:33 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 09:44:04 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 14:30:05 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,23 @@ void sphere_uv(double *u, double *v, t_meet meet_point)
 
 void	set_basic_vec(t_point *basic_vec, t_point normal_vec)
 {
-	if (normal_vec.y != 0.00 && normal_vec.z != 0.00)
+	if (normal_vec.y != 0.00 || normal_vec.z != 0.00)
 	{
 		basic_vec->x = 1;
 		basic_vec->y = 0;
 		basic_vec->z = 0;
 	}
-	else
+	else if (normal_vec.x != 0.00 || normal_vec.y != 0.00)
 	{
 		basic_vec->x = 0;
 		basic_vec->y = 0;
 		basic_vec->z = 1;
+	}
+	else if (normal_vec.x != 0.00 || normal_vec.z != 0.00)
+	{
+		basic_vec->x = 0;
+		basic_vec->y = 1;
+		basic_vec->z = 0;
 	}
 }
 
@@ -48,6 +54,7 @@ void plane_uv(double *u, double *v, t_meet meet_point)
 	t_point	unit_u;
 	t_point	unit_v;
 	t_point	basic_vec;
+	t_point	temp_point;
 
 	plane = (t_plane *)(meet_point.object);
 	set_basic_vec(&basic_vec, plane->normal_vec);
@@ -55,8 +62,9 @@ void plane_uv(double *u, double *v, t_meet meet_point)
 	set_unit_vec(&unit_v);
 	cross_product(unit_v, plane->normal_vec, &unit_u);
 	set_unit_vec(&unit_u);
-	*u = ft_abs(dot_product(meet_point.meet, unit_u));
-	*v = ft_abs(dot_product(meet_point.meet, unit_v));
+	vec_minus_vec(meet_point.meet, plane->in_plain, &temp_point);
+	*u = ft_abs(dot_product(temp_point, unit_u));
+	*v = ft_abs(dot_product(temp_point, unit_v));
 }
 
 void cylinder_or_cone_uv(double *u, double *v, t_meet meet_point, t_minirt info)
@@ -91,6 +99,8 @@ int vec3_to_uv(t_meet meet_point, double *u, double *v, t_minirt info)
 		plane_uv(u, v, meet_point);
 	else if (meet_point.object_type == CYLINDER || meet_point.object_type == CONE)
 		cylinder_or_cone_uv(u, v, meet_point, info);
+	else
+		return (1);
 	return (0);
 }
 
@@ -98,25 +108,29 @@ t_color checkerboard(t_meet meet_point, t_minirt info)
 {
 	double u;
 	double v;
-	int checkerboard_width = 16;		// 매개변수로 가져올것
-	int checkerboard_height = 8;	//	plane = 1,1 나머지는 원하는대로
+	int checkerboard_width = 8;		// 매개변수로 가져올것
+	int checkerboard_height = 4;	//	plane = 1,1 나머지는 원하는대로
 	t_color color;				//
 
-	vec3_to_uv(meet_point, &u, &v, info);
-	u *= (double)checkerboard_width;
-	v *= (double)checkerboard_height;
-	if ((lround(u) + lround(v)) % 2 == 1)
+	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		color.red = 0;
-		color.green = 0;
-		color.blue = 0;
+		u /= (double)checkerboard_width;
+		v /= (double)checkerboard_height;
+		if ((lround(u) + lround(v)) % 2 == 1)
+		{
+			color.red = 0;
+			color.green = 0;
+			color.blue = 0;
+		}
+		else
+		{
+			color.red = 255;
+			color.green = 255;
+			color.blue = 255;
+		}
 	}
 	else
-	{
-		color.red = 255;
-		color.green = 255;
-		color.blue = 255;
-	}
+		color = ((t_cylinder *)(meet_point.object))->color;
 	return (color);
 }
 
@@ -133,9 +147,13 @@ t_color img_overay(t_meet meet_point, t_minirt info)
 	double	v;
 	t_color	color;
 
-	vec3_to_uv(meet_point, &u, &v, info);
-	u *= (double)info.img.width;
-	v *= (double)info.img.height;
-	get_color(info.int_color[lround(v) * info.img.width + lround(u)], &color);
+	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
+	{
+		u *= (double)info.img.width;
+		v *= (double)info.img.height;
+		get_color(info.int_color[lround(v) * info.img.width + lround(u)], &color);
+	}
+	else
+		color = ((t_cylinder *)(meet_point.object))->color;
 	return (color);
 }
