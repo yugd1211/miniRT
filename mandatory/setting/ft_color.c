@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 12:45:06 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 16:36:57 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 	t_meet		*meet;
 	t_line		line;
 
-	t_color		obj_changer;
+	t_color		obj_change;
 
 	line.start_point = meet_point.meet;
 	temp_light = info.necessity.light;
-	obj_changer = img_overay(meet_point, info);
-	// obj_changer = checkerboard(meet_point, info);
-	ambient_reflex(coef_ambient_reflex(info), obj_changer, &(draw->coloring));
 	// ambient_reflex(coef_ambient_reflex(info), draw->obj_color, &(draw->coloring));
+
+	// obj_change = checkerboard(meet_point, info);
+	obj_change = img_overay(meet_point, info);
+	ambient_reflex(coef_ambient_reflex(info), obj_change, &(draw->coloring));
+
 	while (temp_light != NULL)
 	{
 		temp_object = info.head;

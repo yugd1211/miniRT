@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:22:33 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/04 14:30:05 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 16:32:15 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ t_color checkerboard(t_meet meet_point, t_minirt info)
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		u /= (double)checkerboard_width;
-		v /= (double)checkerboard_height;
+		u *= (double)checkerboard_width;
+		v *= (double)checkerboard_height;
 		if ((lround(u) + lround(v)) % 2 == 1)
 		{
 			color.red = 0;
@@ -157,3 +157,4 @@ t_color img_overay(t_meet meet_point, t_minirt info)
 		color = ((t_cylinder *)(meet_point.object))->color;
 	return (color);
 }
+
