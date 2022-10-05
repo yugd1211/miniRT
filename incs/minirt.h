@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 16:33:18 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 22:20:09 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 # include <mlx.h>
 
 # include <stdio.h>
+
+typedef enum e_color_type
+{
+	RGB = 0,
+	CK,
+	BMP
+}	t_color_type;
 
 typedef enum e_switch
 {
@@ -50,6 +57,12 @@ typedef enum e_type
 	DOWN_CIRCLE,
 	NONE
 }	t_type;
+
+typedef struct s_bmp
+{
+	t_texture	img;
+	t_texture	bmp;
+}	t_bmp;
 
 typedef struct s_color
 {
@@ -124,6 +137,8 @@ typedef struct s_object
 {
 	void			*object;
 	t_type			object_type;
+	t_color_type	color_type;
+	t_bmp			bmp;
 	struct s_object	*next;
 }	t_object;
 
@@ -150,10 +165,6 @@ typedef struct s_minirt
 	t_necessity necessity;
 	t_window	window;
 	t_screen	screen;
-	t_mlx_data	img;
-	t_mlx_data	bmp;
-	int			*int_color;
-	int			*int_bmp;
 }	t_minirt;
 
 typedef struct s_line
@@ -164,12 +175,14 @@ typedef struct s_line
 
 typedef struct s_meet
 {
-	void		*object;
-	t_type		object_type;
-	t_point		meet;
-	t_point		dir_vec;
-	double		parm_t;
-	double		temp_t;
+	void			*object;
+	t_type			object_type;
+	t_point			meet;
+	t_point			dir_vec;
+	t_bmp			bmp;
+	t_color_type	color_type;
+	double			parm_t;
+	double			temp_t;
 }	t_meet;
 
 typedef struct s_phong
@@ -219,15 +232,16 @@ int			place_objects(char **argv, t_minirt *info);
 void		set_ambient_lighting(char **list, t_minirt *info, int *count);
 void		set_camera(char **list, t_minirt *info, int *count);
 void		set_light(char **list, t_minirt *info, int *count);
-void		set_sphere(char **list, t_object **object, int *count);
+void		set_sphere(char **list, t_object **object, int *count, t_minirt info);
 void		set_upper_cent(t_cylinder *cylinder);
-void		set_cylinder(char **list, t_object **object, int *count);
-void		set_plane(char **list, t_object **object, int *count);
-void		set_cone(char **list, t_object **object, int *count);
+void		set_cylinder(char **list, t_object **object, int *count, t_minirt info);
+void		set_plane(char **list, t_object **object, int *count, t_minirt info);
+void		set_cone(char **list, t_object **object, int *count, t_minirt info);
 void		set_base_axis(t_minirt info, t_point *base_axis);
 void		ft_set_top_left(t_minirt *info, t_point cent_vec);
 void		ft_set_screen(t_minirt *info);
 void		ft_window(t_minirt *info);
+t_color		ft_obj_color(t_minirt info, t_meet meet_point, t_phong *draw);
 //reflexion
 double						coef_ambient_reflex(t_minirt info);
 void						ambient_reflex(double coef, t_color obj_color, t_color *coloring);
@@ -255,10 +269,12 @@ char	*ft_strdup(const char *src);
 char	*ret_backup(int fd, char *buf, char *backup);
 char	*ret_line(char **backup);
 char	*get_next_line(int fd);
+void	set_meet_color_type(t_object object, t_meet *meet);
 
 t_color img_overay(t_meet meet_point, t_minirt info);
 t_color checkerboard(t_meet meet_point, t_minirt info);
 int vec3_to_uv(t_meet meet_point, double *u, double *v, t_minirt info);
 void	get_color(int rgb, t_color *color);
+void	set_basic_vec(t_point *basic_vec, t_point normal_vec);
 
 #endif

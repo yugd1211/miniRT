@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/03 16:51:44 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 22:19:51 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	renew_parm_t(t_object object, t_meet *meet, t_line line, t_type type)
 	n_multi_vec(meet->temp_t, &(meet->meet));
 	vec_plus_vec(meet->meet, line.start_point, &(meet->meet));
 	meet->dir_vec = line.dir_vec;
+	set_meet_color_type(object, meet);
 	meet->object = object.object;
 	meet->object_type = type;
 }
@@ -34,6 +35,19 @@ t_meet	*new_meet(t_minirt info)
 	new->parm_t = 0.00000000;
 	new->meet = info.necessity.camera.view_point;
 	return (new);
+}
+
+void	set_meet_color_type(t_object object, t_meet *meet)
+{
+	if (object.color_type == BMP)
+	{
+		meet->color_type = BMP;
+		meet->bmp = object.bmp;
+	}
+	else if (object.color_type == RGB)
+		meet->color_type = RGB;
+	else if (object.color_type == CK)
+		meet->color_type = CK;
 }
 
 void	plane_meet(t_object object, t_meet *meet, t_line line)
@@ -56,6 +70,7 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 			n_multi_vec(meet->temp_t, &(meet->meet));
 			vec_plus_vec(meet->meet, line.start_point, &(meet->meet));
 			meet->dir_vec = line.dir_vec;
+			set_meet_color_type(object, meet);
 			meet->object = object.object;
 			meet->object_type = PLANE;
 		}

@@ -6,11 +6,24 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 16:36:57 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 22:09:48 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_color	ft_obj_color(t_minirt info, t_meet meet_point, t_phong *draw)
+{
+	t_color	obj_chance;
+
+	if (meet_point.color_type == CK)
+		obj_chance = checkerboard(meet_point, info);
+	else if (meet_point.color_type == BMP)
+		obj_chance = img_overay(meet_point, info);
+	else
+		obj_chance = draw->obj_color;
+	return (obj_chance);
+}
 
 void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 {
@@ -18,17 +31,12 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 	t_light		*temp_light;
 	t_meet		*meet;
 	t_line		line;
-
 	t_color		obj_change;
 
 	line.start_point = meet_point.meet;
 	temp_light = info.necessity.light;
-	// ambient_reflex(coef_ambient_reflex(info), draw->obj_color, &(draw->coloring));
-
-	// obj_change = checkerboard(meet_point, info);
-	obj_change = img_overay(meet_point, info);
+	obj_change = ft_obj_color(info, meet_point, draw);
 	ambient_reflex(coef_ambient_reflex(info), obj_change, &(draw->coloring));
-
 	while (temp_light != NULL)
 	{
 		temp_object = info.head;

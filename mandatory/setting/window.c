@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 16:43:01 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 21:17:10 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,6 @@ void	ft_window(t_minirt *info)
 	line.start_point = info->necessity.camera.view_point;
 	ft_set_screen(info);
 	draw = info->screen.top_left;
-
-	info->img.img = mlx_xpm_file_to_image(info->window.mlx, "brick.xpm",
-			&info->img.width, &info->img.height);
-	info->int_color = (int *)mlx_get_data_addr(info->img.img, \
-	&info->img.bits_per_pixel, &info->img.line_length, \
-	&info->img.endian);
-	info->bmp.img = mlx_xpm_file_to_image(info->window.mlx, "bmp.xpm",
-			&info->bmp.width, &info->bmp.height);
-	info->int_bmp = (int *)mlx_get_data_addr(info->bmp.img, \
-	&info->bmp.bits_per_pixel, &info->bmp.line_length, \
-	&info->bmp.endian);
-
 	while (y < info->window.win_size[HEIGHT])
 	{
 		x = 0;

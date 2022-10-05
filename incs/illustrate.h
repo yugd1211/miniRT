@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 18:27:18 by sielee            #+#    #+#             */
-/*   Updated: 2022/10/05 16:27:06 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 20:45:27 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,18 @@ typedef struct	s_mlx_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+}				t_mlx_data;
+
+typedef struct	s_texture
+{
+	void	*img;
+	int		*color;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		width;
 	int		height;
-}				t_mlx_data;
+}				t_texture;
 
 typedef struct	s_window
 {

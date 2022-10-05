@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 18:58:06 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 22:20:51 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 	else if (ft_strncmp(temp_list[0], "L", ft_strlen("L") + 1) == 0)
 		set_light(temp_list, info, &count);
 	else if (ft_strncmp(temp_list[0], "sp", ft_strlen("sp") + 1) == 0)
-		set_sphere(temp_list, temp_obj, &count);
+		set_sphere(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "pl", ft_strlen("pl") + 1) == 0)
-		set_plane(temp_list, temp_obj, &count);
+		set_plane(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "cy", ft_strlen("cy") + 1) == 0)
-		set_cylinder(temp_list, temp_obj, &count);
+		set_cylinder(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
-		set_cone(temp_list, temp_obj, &count);
+		set_cone(temp_list, temp_obj, &count, *info);
 	return (0);
 }
 

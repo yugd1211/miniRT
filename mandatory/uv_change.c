@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:22:33 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 16:32:15 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 22:05:37 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,20 @@ t_color checkerboard(t_meet meet_point, t_minirt info)
 {
 	double u;
 	double v;
-	int checkerboard_width = 8;		// 매개변수로 가져올것
-	int checkerboard_height = 4;	//	plane = 1,1 나머지는 원하는대로
-	t_color color;				//
+	t_color color;
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		u *= (double)checkerboard_width;
-		v *= (double)checkerboard_height;
+		if (meet_point.object_type == PLANE)
+		{
+			u /= (double)(8);
+			v /= (double)(4);
+		}
+		else
+		{
+			u *= (double)(8);
+			v *= (double)(4);
+		}
 		if ((lround(u) + lround(v)) % 2 == 1)
 		{
 			color.red = 0;
@@ -149,9 +155,9 @@ t_color img_overay(t_meet meet_point, t_minirt info)
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		u *= (double)info.img.width;
-		v *= (double)info.img.height;
-		get_color(info.int_color[lround(v) * info.img.width + lround(u)], &color);
+		u *= (double)(meet_point.bmp.img.width);
+		v *= (double)(meet_point.bmp.img.height);
+		get_color(meet_point.bmp.img.color[lround(v) * meet_point.bmp.img.width + lround(u)], &color);
 	}
 	else
 		color = ((t_cylinder *)(meet_point.object))->color;
