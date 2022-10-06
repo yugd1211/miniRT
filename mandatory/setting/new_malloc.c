@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_malloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:05 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 19:04:39 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:55:41 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_object	*new_object(void)
 {
-	t_object *new;
-	
+	t_object	*new;
+
 	new = malloc(sizeof(t_object));
 	if (!new)
 		return (NULL);
@@ -27,8 +27,8 @@ t_object	*new_object(void)
 
 t_light	*new_light(void)
 {
-	t_light *new;
-	
+	t_light	*new;
+
 	new = malloc(sizeof(t_light));
 	if (!new)
 		ft_error("new_light malloc fail");

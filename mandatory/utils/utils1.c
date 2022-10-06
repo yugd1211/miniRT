@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:32:51 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/29 18:58:24 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:57:11 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 double	distance(t_point p1, t_point p2)
 {
-	double distance;
-	
+	double	distance;
+
 	distance = sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) \
 	+ pow(p1.z - p2.z, 2));
 	return (distance);

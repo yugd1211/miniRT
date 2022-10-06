@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:44 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/30 17:12:47 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:57:15 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void	vec_minus_vec(t_point p1, t_point p2, t_point *ans)
 	ans->y = p1.y - p2.y;
 	ans->z = p1.z - p2.z;
 }
-

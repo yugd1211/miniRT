@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 19:19:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:42:13 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,9 @@ int			place_objects(char **argv, t_minirt *info);
 void		set_ambient_lighting(char **list, t_minirt *info, int *count);
 void		set_camera(char **list, t_minirt *info, int *count);
 void		set_light(char **list, t_minirt *info, int *count);
+void		set_color_type(char **list, t_object *object, int *idx);
+void		bump_map_check(t_object **object, char **list, int *idx, t_minirt info);
+void		rgb_check(t_color *color, char **list, int *idx);
 void		set_sphere(char **list, t_object **object, int *count, t_minirt info);
 void		set_upper_cent(t_cylinder *cylinder);
 void		set_cylinder(char **list, t_object **object, int *count, t_minirt info);
@@ -273,10 +276,13 @@ char	*ret_backup(int fd, char *buf, char *backup);
 char	*ret_line(char **backup);
 char	*get_next_line(int fd);
 void	set_meet_color_type(t_object object, t_meet *meet);
-
+//checkerboard_texture_mapping
 t_color img_overay(t_meet meet_point, t_minirt info);
 t_color checkerboard(t_meet meet_point, t_minirt info);
-int vec3_to_uv(t_meet meet_point, double *u, double *v, t_minirt info);
+int 	vec3_to_uv(t_meet meet_point, double *u, double *v, t_minirt info);
+void	sphere_uv(double *u, double *v, t_meet meet_point);
+void	plane_uv(double *u, double *v, t_meet meet_point);
+void	cylinder_cone_uv(double *u, double *v, t_meet meet_point, t_minirt info);
 void	get_color(int rgb, t_color *color);
 void	set_basic_vec(t_point *basic_vec, t_point normal_vec);
 

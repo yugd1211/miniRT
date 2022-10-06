@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:57:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 19:56:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 21:05:09 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	color_set(t_phong *draw)
 {
-	draw->color = 0 << 24 | draw->coloring.red << 16 | draw->coloring.green << 8 | draw->coloring.blue;
+	draw->color = 0 << 24 | draw->coloring.red << 16 | \
+		draw->coloring.green << 8 | draw->coloring.blue;
 }
 
 void	over_color_check(t_color *coloring)
