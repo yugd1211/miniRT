@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 19:19:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:55:30 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,18 @@ typedef struct s_meet
 	double			parm_t;
 	double			temp_t;
 }	t_meet;
+
+typedef struct s_cylinder_set
+{
+	t_object	obj;
+	t_line		line;
+}	t_cylinder_set;
+
+typedef struct s_light_check
+{
+	t_meet	meet_point;
+	t_light	temp_light;
+}	t_light_check;
 
 typedef struct s_phong
 {

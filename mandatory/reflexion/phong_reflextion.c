@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 18:44:22 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:26:56 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ t_point	get_new_normal_vec(t_point nor_vec, t_point	temp)
 	set_unit_vec(&tangent);
 	cross_product(tangent, nor_vec, &bitangent);
 	set_unit_vec(&bitangent);
-	new_nor_vec.x = (tangent.x * temp.x + bitangent.x * temp.y + nor_vec.x * temp.z);
-	new_nor_vec.y = (tangent.y * temp.x + bitangent.y * temp.y + nor_vec.y * temp.z);
-	new_nor_vec.z = (tangent.z * temp.x + bitangent.z * temp.y + nor_vec.z * temp.z);
+	new_nor_vec.x = (tangent.x * temp.x + bitangent.x * temp.y + nor_vec.x * \
+	temp.z);
+	new_nor_vec.y = (tangent.y * temp.x + bitangent.y * temp.y + nor_vec.y * \
+	temp.z);
+	new_nor_vec.z = (tangent.z * temp.x + bitangent.z * temp.y + nor_vec.z * \
+	temp.z);
 	set_unit_vec(&new_nor_vec);
 	return (new_nor_vec);
 }
@@ -51,7 +54,8 @@ t_point	bmp(t_point nor_vec, t_meet meet_point, t_minirt info)
 			u *= (double)(meet_point.bmp.img.width);
 			v *= (double)(meet_point.bmp.img.height);
 		}
-		get_color(meet_point.bmp.bmp.color[lround(v) * meet_point.bmp.bmp.width + lround(u)], &bmp);
+		get_color(meet_point.bmp.bmp.color[lround(v) * \
+		meet_point.bmp.bmp.width + lround(u)], &bmp);
 		temp.x = (((double)(bmp.red)) / 255 * 2 - 1);
 		temp.y = (((double)(bmp.green)) / 255 * 2 - 1);
 		temp.z = (((double)(bmp.blue)) / 255 * 2 - 1);
@@ -77,8 +81,10 @@ void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *d
 		if (meet_point.color_type == BMP)
 			*normal_vec = bmp(*normal_vec, meet_point, info);
 		obj_change = ft_obj_color(info, meet_point, draw);
-		disfusion_reflex(coef_disfusion_reflex(meet_point, light, *normal_vec), obj_change, light.color, &(draw->coloring));
-		specular_reflex(coef_specular_reflex(meet_point, light, info, *normal_vec), light.color, &(draw->coloring));
+		disfusion_reflex(coef_disfusion_reflex(meet_point, light, \
+		*normal_vec), obj_change, light.color, &(draw->coloring));
+		specular_reflex(coef_specular_reflex(meet_point, light, \
+		info, *normal_vec), light.color, &(draw->coloring));
 	}
 	free(normal_vec);
 }

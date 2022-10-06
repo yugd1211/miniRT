@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:41:21 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/03 19:03:42 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:27:04 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ double	coef_specular_reflex(t_meet meet_point, t_light light, t_minirt info, t_p
 	k_s = 1;
 	vec_minus_vec(light.light_point, meet_point.meet, &light_vec);
 	set_unit_vec(&light_vec);
-	vec_minus_vec(info.necessity.camera.view_point, meet_point.meet, &camera_vec);
+	vec_minus_vec(info.necessity.camera.view_point, meet_point.meet, \
+	&camera_vec);
 	set_unit_vec(&camera_vec);
 	temp_vec = nor_vec;
 	n_multi_vec(dot_product(nor_vec, light_vec) * 2, &temp_vec);

@@ -6,7 +6,7 @@
 #    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/10/06 16:55:33 by iyun             ###   ########seoul.kr   #
+#    Updated: 2022/10/06 21:05:28 by iyun             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/utils/ft_free.c \
 					mandatory/setting/ft_color.c mandatory/setting/new_malloc.c \
 					mandatory/setting/parse.c mandatory/setting/window.c \
-					mandatory/setting/setting.c \
+					mandatory/setting/setting.c mandatory/setting/ft_light_check.c\
 					mandatory/reflexion/ambient.c mandatory/reflexion/disfusion.c \
 					mandatory/reflexion/light_view_correlation.c \
 					mandatory/reflexion/phong_reflextion.c \
