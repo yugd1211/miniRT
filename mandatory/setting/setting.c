@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:48:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:29:42 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/06 21:29:21 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	set_color_type(char **list, t_object *object, int *idx)
 {
-	if (ft_strncmp(list[(*idx)], "rgb", ft_strlen("rgb") + 1) == 0)
+	if (ft_strncmp(ft_void_newline(list[(*idx)]), "rgb", ft_strlen("rgb") + 1) == 0)
 		object->color_type = RGB;
-	else if (ft_strncmp(list[(*idx)], "ck", ft_strlen("ck") + 1) == 0)
+	else if (ft_strncmp(ft_void_newline(list[(*idx)]), "ck", ft_strlen("ck") + 1) == 0)
 		object->color_type = CK;
-	else if (ft_strncmp(list[(*idx)], "bmp", ft_strlen("bmp") + 1) == 0)
+	else if (ft_strncmp(ft_void_newline(list[(*idx)]), "bmp", ft_strlen("bmp") + 1) == 0)
 		object->color_type = BMP;
 	else
 		ft_error("Wrong type1");

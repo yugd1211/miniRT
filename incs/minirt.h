@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:13:04 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/06 21:39:46 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,9 @@ void		ft_set_top_left(t_minirt *info, t_point cent_vec);
 void		ft_set_screen(t_minirt *info);
 void		ft_window(t_minirt *info);
 t_color		ft_obj_color(t_minirt info, t_meet meet_point, t_phong *draw);
+void		ft_plane_error(t_object **object, int *count);
+void		ft_cylinder_cone_error(t_object **object, int *count);
+void		ft_sphere_error(t_object **object, int *count);
 //reflexion
 double						coef_ambient_reflex(t_minirt info);
 void						ambient_reflex(double coef, t_color obj_color, t_color *coloring);

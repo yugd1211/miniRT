@@ -6,12 +6,12 @@ L  0,0,-5    0.9            255,255,255
 L  5,50,-50    0.9            255,255,255
 
 # sp  0,50,0              25   bmp  image_file/earth.xpm      bump_map_file/earth_bmp.xpm
-# sp  0,300,0              25   bmp  image_file/earth.xpm      bump_map_file/earth_bmp.xpm
-sp  0,80,0              25   rgb     25,225,100
+sp  0,30,0              10   bmp  image_file/earth.xpm      bump_map_file/earth_bmp.xpm
+# sp  0,80,0              25   rgb     25,225,100
 # pl  0,100,0  0,1,0      bmp  image_file/earth.xpm   bump_map_file/earth_bmp.xpm
-pl  0,100,0  0,1,0      ck     25,225,100
-# cy  0,15,0  0,-1,-1  5  10 bmp  image_file/earth.xpm   bump_map_file/earth_bmp.xpm 0,255,255
-# co  0,15,0  0,0,-1  5  15  rgb     25,225,100
-# cy  -8.5,20,2  0,0.2,0.8   4  1  rgb     25,225,100
-# cy  -9,20,3.5  0,0.2,0.8   3  1  rgb    25,200,100
-# cy  -8,30,4.5  0,0,1   5  1      ck   25,250,200
+pl  0,100,0  0,1,0      ck
+cy  0,15,0  0,-1,-1  5  10 bmp  image_file/earth.xpm   bump_map_file/earth_bmp.xpm 0,255,255
+co  0,15,0  0,-1,-1  5  10 bmp  image_file/earth.xpm   bump_map_file/earth_bmp.xpm 0,255,255
+cy  -8.5,20,2  0,0.2,0.8   4  1  rgb     25,225,75
+cy  -9,20,3.5  0,0.2,0.8   3  1  rgb    25,200,100
+cy  -8,30,4.5  0,0,1   5  1      ck   25,250,200

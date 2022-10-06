@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:28:51 by gyyu              #+#    #+#             */
-/*   Updated: 2022/10/06 20:31:29 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/06 21:42:36 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	set_sphere(char **list, t_object **object, int *count, t_minirt info)
 		rgb_check(&new->color, list, &idx);
 	if ((*object)->color_type == BMP)
 		bump_map_check(object, list, &idx, info);
+	ft_sphere_error(object, count);
 	(*object)->object = (void *)new;
 	(*object)->object_type = SPHERE;
 	(*object)->next = new_object();
@@ -66,6 +67,7 @@ void	set_cylinder(char **list, t_object **object, int *count, t_minirt info)
 	set_color_type(list, *object, &idx);
 	if ((*object)->color_type == BMP)
 		bump_map_check(object, list, &idx, info);
+	ft_cylinder_cone_error(object, count);
 	rgb_check(&new->color, list, &idx);
 	set_upper_cent(new);
 	(*object)->object = (void *)new;
@@ -94,6 +96,7 @@ void	set_plane(char **list, t_object **object, int *count, t_minirt info)
 		rgb_check(&new->color, list, &idx);
 	if ((*object)->color_type == BMP)
 		bump_map_check(object, list, &idx, info);
+	ft_plane_error(object, count);
 	(*object)->object = (void *)new;
 	(*object)->object_type = PLANE;
 	(*object)->next = new_object();
@@ -120,6 +123,7 @@ void	set_cone(char **list, t_object **object, int *count, t_minirt info)
 	set_color_type(list, *object, &idx);
 	if ((*object)->color_type == BMP)
 		bump_map_check(object, list, &idx, info);
+	ft_cylinder_cone_error(object, count);
 	rgb_check(&new->color, list, &idx);
 	(*object)->object = (void *)new;
 	(*object)->object_type = CONE;

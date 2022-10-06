@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/10/06 21:12:06 by gyyu             ###   ########.fr        #
+#    Updated: 2022/10/06 21:43:03 by iyun             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/setting/ft_color.c mandatory/setting/new_malloc.c \
 					mandatory/setting/parse.c mandatory/setting/window.c \
 					mandatory/setting/setting.c mandatory/setting/setting_cam_light.c \
-					mandatory/setting/setting_object.c\
+					mandatory/setting/setting_object.c mandatory/setting/error_check.c\
 					mandatory/setting/ft_light_check.c\
 					mandatory/reflexion/ambient.c mandatory/reflexion/disfusion.c \
 					mandatory/reflexion/light_view_correlation.c \
@@ -47,7 +47,7 @@ BONUS_OBJS		= $(BONUS_SRCS:.c=.o)
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -g
+CFLAGS			= -Wall -Wextra -Werror
 
 NAME			= minirt
 
