@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 22:20:09 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 19:19:19 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,9 @@ void		vec_plus_vec(t_point p1, t_point p2, t_point *ans);
 void		vec_minus_vec(t_point p1, t_point p2, t_point *ans);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_equal(double num1, double num2);
+void		ft_free(t_object *obj_head, t_light *light_head);
+char		*ft_void_newline(char *str);
+void		ft_split_free(char **str);
 //setting
 void		ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw);
 void		ft_color(t_minirt info, t_line line, int x, int y);

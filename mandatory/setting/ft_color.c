@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 22:09:48 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 18:00:47 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ t_color	ft_obj_color(t_minirt info, t_meet meet_point, t_phong *draw)
 		obj_chance = checkerboard(meet_point, info);
 	else if (meet_point.color_type == BMP)
 		obj_chance = img_overay(meet_point, info);
-	else
+	else if (meet_point.color_type == RGB)
 		obj_chance = draw->obj_color;
+	else
+	{
+		obj_chance = draw->obj_color;
+		ft_error("Wrong type2");
+	}
 	return (obj_chance);
 }
 

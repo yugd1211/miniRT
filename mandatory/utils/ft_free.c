@@ -1,52 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 18:57:55 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 18:22:54 by iyun             ###   ########seoul.kr  */
+/*   Created: 2022/10/06 16:41:55 by iyun              #+#    #+#             */
+/*   Updated: 2022/10/06 19:19:08 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	ret_max(double a, double b)
+void	ft_free(t_object *obj_head, t_light *light_head)
 {
-	if (a > b)
-		return (a);
-	return (b);
+	t_object	*temp_obj;
+	t_light		*temp_light;
+
+	while (obj_head != NULL)
+	{
+		temp_obj = obj_head->next;
+		free(obj_head->object);
+		free(obj_head);
+		obj_head = temp_obj;
+	}
+	while (light_head != NULL)
+	{
+		temp_light = light_head->next;
+		free(light_head);
+		light_head = temp_light;
+	}
 }
 
-double	ret_min(double a, double b)
+void	ft_split_free(char **str)
 {
-	if (a > b)
-		return (b);
-	return (a);
-}
-
-int	ft_distance(t_meet meet_point, t_line line, t_light light)
-{
-	double	dist;
-
-	dist = distance(meet_point.meet, light.light_point);
-	return (dist / sqrt(dot_product(line.dir_vec, line.dir_vec)));
-}
-
-char	*ft_void_newline(char *str)
-{
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\n')
-		{
-			str[i] = 0;
-			break ;
-		}
+		free(str[i]);
 		i++;
 	}
-	return (str);
+	free(str[i]);
+	free(str);
 }

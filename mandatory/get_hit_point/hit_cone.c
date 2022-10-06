@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:49:20 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/02 19:08:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 17:56:42 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	cone_meet(t_object object, t_meet *meet, t_line line)
 			meet->parm_t = coef.min;
 			meet->meet = temp_vec;
 			meet->object_type = DOWN_CIRCLE;
+			set_meet_color_type(object, meet);
 			meet->object = object.object;
 		}
 	}

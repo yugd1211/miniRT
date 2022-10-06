@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:22:33 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 22:05:37 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 18:44:40 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,16 @@ t_color img_overay(t_meet meet_point, t_minirt info)
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		u *= (double)(meet_point.bmp.img.width);
-		v *= (double)(meet_point.bmp.img.height);
+		if (meet_point.object_type == PLANE)
+		{
+			u /= (double)(16);
+			v /= (double)(8);
+		}
+		else
+		{
+			u *= (double)(meet_point.bmp.img.width);
+			v *= (double)(meet_point.bmp.img.height);
+		}
 		get_color(meet_point.bmp.img.color[lround(v) * meet_point.bmp.img.width + lround(u)], &color);
 	}
 	else

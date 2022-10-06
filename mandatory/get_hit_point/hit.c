@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 22:19:51 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 18:00:53 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	set_meet_color_type(t_object object, t_meet *meet)
 		meet->color_type = RGB;
 	else if (object.color_type == CK)
 		meet->color_type = CK;
+	else
+		ft_error("Wrong type0");
 }
 
 void	plane_meet(t_object object, t_meet *meet, t_line line)

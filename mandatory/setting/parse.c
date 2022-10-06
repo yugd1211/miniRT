@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 22:20:51 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 19:19:47 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 		set_cylinder(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
 		set_cone(temp_list, temp_obj, &count, *info);
+	ft_split_free(temp_list);
 	return (0);
 }
 

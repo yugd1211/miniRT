@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:49 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/05 21:14:27 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 17:23:56 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int main(int ac, char *av[])
 	if (place_objects(av, &info) == -1)
 		ft_error(NULL);
 	ft_window(&info);
+	ft_free(info.head, info.necessity.light);
 	return (EXIT_SUCCESS);
 }

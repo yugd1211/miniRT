@@ -6,7 +6,7 @@
 #    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/10/05 16:29:29 by iyun             ###   ########seoul.kr   #
+#    Updated: 2022/10/06 16:55:33 by iyun             ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/utils/product.c mandatory/utils/utils1.c \
 					mandatory/utils/utils2.c mandatory/utils/vec_utils.c \
 					mandatory/utils/ft_strncmp.c mandatory/utils/equal.c \
+					mandatory/utils/ft_free.c \
 					mandatory/setting/ft_color.c mandatory/setting/new_malloc.c \
 					mandatory/setting/parse.c mandatory/setting/window.c \
 					mandatory/setting/setting.c \

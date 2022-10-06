@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:47:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/03 15:54:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 19:01:38 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 			meet->parm_t = coef.max;
 			meet->meet = temp_vec;
 			meet->object_type = UP_CIRCLE;
+			set_meet_color_type(object, meet);
 			meet->object = object.object;
 		}
 		//원기둥 아랫면//
@@ -61,6 +62,7 @@ void	cylinder_meet(t_object object, t_meet *meet, t_line line)
 			meet->parm_t = coef.min;
 			meet->meet = temp_vec;
 			meet->object_type = DOWN_CIRCLE;
+			set_meet_color_type(object, meet);
 			meet->object = object.object;
 		}
 	}
