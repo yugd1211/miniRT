@@ -6,7 +6,7 @@
 #    By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/10/06 20:40:11 by gyyu             ###   ########.fr        #
+#    Updated: 2022/10/06 21:12:06 by gyyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/setting/parse.c mandatory/setting/window.c \
 					mandatory/setting/setting.c mandatory/setting/setting_cam_light.c \
 					mandatory/setting/setting_object.c\
+					mandatory/setting/ft_light_check.c\
 					mandatory/reflexion/ambient.c mandatory/reflexion/disfusion.c \
 					mandatory/reflexion/light_view_correlation.c \
 					mandatory/reflexion/phong_reflextion.c \

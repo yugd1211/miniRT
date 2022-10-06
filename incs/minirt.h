@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:51:50 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:42:13 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/06 21:13:04 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,18 @@ typedef struct s_meet
 	double			temp_t;
 }	t_meet;
 
+typedef struct s_cylinder_set
+{
+	t_object	obj;
+	t_line		line;
+}	t_cylinder_set;
+
+typedef struct s_light_check
+{
+	t_meet	meet_point;
+	t_light	temp_light;
+}	t_light_check;
+
 typedef struct s_phong
 {
 	t_color	coloring;
@@ -258,6 +270,7 @@ t_light_view_correlation	ft_correlation(t_meet meet_point, t_light light, t_mini
 void						phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *draw);
 double						coef_specular_reflex(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec);
 void						specular_reflex(double coef, t_color light, t_color *coloring);
+void						ft_check_hit_obj(t_meet *meet, t_object *temp_object, t_line line);
 //get_hit_point
 void	renew_parm_t(t_object object, t_meet *meet, t_line line, t_type type);
 t_meet	*new_meet(t_minirt info);

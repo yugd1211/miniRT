@@ -6,7 +6,7 @@
 /*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 18:00:53 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:13:19 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 		meet->temp_t = (dot_product(plane->normal_vec, plane->in_plain) - \
 		dot_product(plane->normal_vec, line.start_point)) / \
 		dot_product(plane->normal_vec, line.dir_vec);
-		if (meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t || ft_equal(meet->parm_t, 0.00000000) == 0))
+		if (meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t \
+			|| ft_equal(meet->parm_t, 0.00000000) == 0))
 		{
 			meet->parm_t = meet->temp_t;
 			meet->meet = line.dir_vec;
@@ -77,7 +78,6 @@ void	plane_meet(t_object object, t_meet *meet, t_line line)
 			meet->object_type = PLANE;
 		}
 	}
-
 }
 
 void	sphere_meet(t_object object, t_meet *meet, t_line line)
