@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_reflextion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 11:54:30 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:08:32 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ t_point	bmp(t_point nor_vec, t_meet meet_point, t_minirt info)
 void	phong_reflexion( \
 	t_meet meet_point, t_light light, t_minirt info, t_phong *draw)
 {
-	t_point						*normal_vec;
-	t_light_view_correlation	correlation;
-	t_color						obj_change;
+	t_point			*normal_vec;
+	t_correlation	correlation;
+	t_color			obj_change;
 
 	normal_vec = ft_normal_vec(meet_point, info);
 	set_unit_vec(normal_vec);

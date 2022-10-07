@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   light_view_correlation_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:37:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:43:17 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:06:36 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
 
-t_light_view_correlation	ft_correlation( \
+t_correlation	ft_correlation( \
 	t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
 {
 	t_point	meet_camera;

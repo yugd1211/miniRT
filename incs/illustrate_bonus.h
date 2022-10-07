@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   illustrate_bonux.h                                 :+:      :+:    :+:   */
+/*   illustrate_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:42:05 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:33:21 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:15:30 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ILLUSTRATE_H
-# define ILLUSTRATE_H
+#ifndef ILLUSTRATE_BONUS_H
+# define ILLUSTRATE_BONUS_H
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_KEY_DESTROY_NOTIFY 17
 # define KEY_ESC 53
-typedef enum	e_side
+
+typedef enum e_side
 {
 	WIDTH,
 	HEIGHT
 }				t_e_side;
-typedef struct	s_mlx_data
+
+typedef struct s_mlx_data
 {
 	void	*img;
 	char	*addr;
@@ -29,7 +31,8 @@ typedef struct	s_mlx_data
 	int		line_length;
 	int		endian;
 }				t_mlx_data;
-typedef struct	s_texture
+
+typedef struct s_texture
 {
 	void	*img;
 	int		*color;
@@ -39,7 +42,8 @@ typedef struct	s_texture
 	int		width;
 	int		height;
 }				t_texture;
-typedef struct	s_window
+
+typedef struct s_window
 {
 	t_mlx_data	mlx_data;
 	void		*mlx;
