@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tangent_plane.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 17:05:07 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:23:22 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	cylinder_tangent_plane(t_meet meet_point, t_point *nor_vec, t_minirt info)
+void	cylinder_tangent_plane(
+	t_meet meet_point, t_point *nor_vec, t_minirt info)
 {
 	t_cylinder	*cylinder;
 	t_point		temp_point;
@@ -80,7 +81,7 @@ t_point	*ft_normal_vec(t_meet meet_point, t_minirt info)
 
 	nor_vec = malloc(sizeof(t_point));
 	if (!nor_vec)
-		ft_error("Wrong malloc");
+		ft_error("Wrong Malloc");
 	if (meet_point.object_type == PLANE)
 		*nor_vec = ((t_plane *)(meet_point.object))->normal_vec;
 	else if (meet_point.object_type == SPHERE)

@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:49:20 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:14:29 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:01:24 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	set_cone_coefficient(t_line line, t_cylinder *cone, t_formula_coef *coef, double *temp)
+void	set_cone_coefficient(
+	t_line line, t_cylinder *cone, t_formula_coef *coef, double *temp)
 {
 	t_point	temp_vec;
-	
+
 	*temp = square(cone->diameter) / square(cone->height);
 	coef->a = dot_product(line.dir_vec, line.dir_vec) - (1 + *temp) * \
 	square(dot_product(line.dir_vec, cone->normal_vec));
@@ -36,7 +37,8 @@ void	set_cone_coefficient(t_line line, t_cylinder *cone, t_formula_coef *coef, d
 	dot_product(line.dir_vec, cone->normal_vec);
 }
 
-void	set_cone_side_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cone, t_cylinder_set set)
+void	set_cone_side_plane(t_meet *meet, t_formula_coef *coef,
+	t_cylinder *cone, t_cylinder_set set)
 {
 	meet->temp_t = (coef->b * -1 + sqrt(coef->discriminant)) / coef->a;
 	if (0 <= ft_alpha(meet->temp_t, *cone, set.line) && \
@@ -50,10 +52,11 @@ void	set_cone_side_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cone, t
 		renew_parm_t(set.obj, meet, set.line, CONE);
 }
 
-void	set_cone_down_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cone, t_cylinder_set set)
+void	set_cone_down_plane(t_meet *meet, t_formula_coef *coef,
+	t_cylinder *cone, t_cylinder_set set)
 {
 	t_point	temp_vec;
-	
+
 	if (ft_equal(dot_product(set.line.dir_vec, cone->normal_vec), 0.00) == 1)
 	{
 		temp_vec = set.line.dir_vec;

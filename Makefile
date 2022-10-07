@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+         #
+#    By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 19:16:12 by iyun              #+#    #+#              #
-#    Updated: 2022/10/06 21:43:03 by iyun             ###   ########seoul.kr   #
+#    Updated: 2022/10/07 12:45:22 by gyyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,12 +37,29 @@ SRCS			=	mandatory/main.c mandatory/tangent_plane.c \
 					mandatory/uv_change.c mandatory/checker_or_texture.c 
 OBJS			= $(SRCS:.c=.o)
 
-BONUS_SRCS		=	bonus/ft_atoi_bonus.c bonus/ft_split_bonus.c bonus/ft_split_size_bonus.c \
-					bonus/get_next_line_bonus.c bonus/get_next_line_utils_bonus.c \
-					bonus/bresenham_line_bonus.c bonus/ft_axis_vector_bonus.c bonus/key_hook_bonus.c \
-					bonus/matrix_bonus.c bonus/ret_mag_bonus.c bonus/draw_bonus.c bonus/fdf_utils_bonus.c \
-					bonus/ft_ret_bonus.c bonus/key_hook_move_bonus.c bonus/mouse_hook_bonus.c \
-					bonus/fdf_bonus.c bonus/main_bonus.c bonus/mouse_wheel_hook_bonus.c
+BONUS_SRCS		=	bonus/main_bonus.c bonus/tangent_plane_bonus.c \
+					bonus/utils/check_necessity_bonus.c bonus/utils/color_utils_bonus.c \
+					bonus/utils/ft_atof_bonus.c bonus/utils/ft_atoi_bonus.c \
+					bonus/utils/ft_error_bonus.c bonus/utils/ft_split_bonus.c \
+					bonus/utils/product_bonus.c bonus/utils/utils1_bonus.c \
+					bonus/utils/utils2_bonus.c bonus/utils/vec_utils_bonus.c \
+					bonus/utils/ft_strncmp_bonus.c bonus/utils/equal_bonus.c \
+					bonus/utils/ft_free_bonus.c \
+					bonus/setting/ft_color_bonus.c bonus/setting/new_malloc_bonus.c \
+					bonus/setting/parse_bonus.c bonus/setting/window_bonus.c \
+					bonus/setting/setting_bonus.c bonus/setting/setting_cam_light_bonus.c \
+					bonus/setting/setting_object_bonus.c bonus/setting/error_check_bonus.c\
+					bonus/setting/ft_light_check_bonus.c\
+					bonus/reflexion/ambient_bonus.c bonus/reflexion/disfusion_bonus.c \
+					bonus/reflexion/light_view_correlation_bonus.c \
+					bonus/reflexion/phong_reflextion_bonus.c \
+					bonus/reflexion/specular_bonus.c \
+					bonus/illustrate/event_exit_bonus.c bonus/illustrate/visual_bonus.c \
+					bonus/get_hit_point/hit_bonus.c bonus/get_hit_point/hit_cylinder_bonus.c \
+					bonus/get_hit_point/hit_cone_bonus.c bonus/get_hit_point/ft_alpha_bonus.c \
+					get_next_line/get_next_line_utils_bonus.c \
+					get_next_line/get_next_line_bonus.c \
+					bonus/uv_change_bonus.c bonus/checker_or_texture_bonus.c 
 BONUS_OBJS		= $(BONUS_SRCS:.c=.o)
 
 CC				= cc

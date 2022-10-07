@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:53 by iyun              #+#    #+#             */
-/*   Updated: 2022/09/18 15:10:37 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:38 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_error(char *str)
 {
-	write(1, "ERROR\n", ft_strlen("ERROR\n"));
+	write(2, "Error\n", ft_strlen("Error\n"));
 	if (str)
 	{
-		write(1, str, ft_strlen(str));
-		write(1, "\n", 1);
+		write(2, str, ft_strlen(str));
+		write(2, "\n", 1);
 	}
 	exit (-1);
 }

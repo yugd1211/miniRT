@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:25:38 by gyyu              #+#    #+#             */
-/*   Updated: 2022/10/06 20:25:42 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	set_ambient_lighting(char **list, t_minirt *info, int *count)
 {
 	if (*count != 5 || info->necessity.ambient._switch == ON)
-		ft_error("set_ambient_lighting");
+		ft_error("Wrong Ambient_Lighting");
 	info->necessity.ambient.ambient_ratio = ft_atof(list[1]);
 	info->necessity.ambient.color.red = ft_atoi(list[2]);
 	info->necessity.ambient.color.green = ft_atoi(list[3]);
@@ -26,7 +26,7 @@ void	set_ambient_lighting(char **list, t_minirt *info, int *count)
 void	set_camera(char **list, t_minirt *info, int *count)
 {
 	if (*count != 8 || info->necessity.camera._switch == ON)
-		ft_error("set_camera");
+		ft_error("Wrong Camera");
 	info->necessity.camera.view_point.x = ft_atof(list[1]);
 	info->necessity.camera.view_point.y = ft_atof(list[2]);
 	info->necessity.camera.view_point.z = ft_atof(list[3]);
@@ -40,7 +40,7 @@ void	set_camera(char **list, t_minirt *info, int *count)
 void	set_light(char **list, t_minirt *info, int *count)
 {
 	if (*count != 8)
-		ft_error("set_light");
+		ft_error("Wrong Light");
 	if (info->necessity.light != NULL && info->necessity.light->_switch == ON)
 	{
 		info->necessity.light->next = new_light();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:13:19 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_meet	*new_meet(t_minirt info)
 
 	new = malloc(sizeof(t_meet));
 	if (!new)
-		ft_error("Wrong malloc");
+		ft_error("Wrong Malloc");
 	new->object = NULL;
 	new->parm_t = 0.00000000;
 	new->meet = info.necessity.camera.view_point;
@@ -49,7 +49,7 @@ void	set_meet_color_type(t_object object, t_meet *meet)
 	else if (object.color_type == CK)
 		meet->color_type = CK;
 	else
-		ft_error("Wrong type0");
+		ft_error("Wrong Color Type1");
 }
 
 void	plane_meet(t_object object, t_meet *meet, t_line line)

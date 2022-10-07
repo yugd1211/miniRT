@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   light_view_correlation.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:37:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:32:57 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 11:55:04 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_light_view_correlation	ft_correlation(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
+t_light_view_correlation	ft_correlation( \
+	t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
 {
 	t_point	meet_camera;
 	t_point	meet_light;
@@ -31,4 +32,4 @@ t_light_view_correlation	ft_correlation(t_meet meet_point, t_light light, t_mini
 	else if (inner_normal_light <= 0 && inner_normal_view > 0)
 		return (IN_OUT);
 	return (IN_IN);
-} // 빛과 카메라가 오브젝트 내부에 있는지 여부
+}

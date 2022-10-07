@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disfusion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:40:07 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:25:50 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 11:55:19 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ double	coef_disfusion_reflex(t_meet meet_point, t_light light, t_point nor_vec)
 	light.brightness_ratio * k_b);
 }
 
-void	disfusion_reflex(double coef, t_color obj_color, t_color light, t_color *coloring)
+void	disfusion_reflex(
+	double coef, t_color obj_color, t_color light, t_color *coloring)
 {
 	coloring->red += lround(ret_min((coef * (double)(light.red)), \
 	obj_color.red));

@@ -6,16 +6,17 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:47:46 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:13:11 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 12:01:02 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	set_cylinder_coefficient(t_line line, t_cylinder *cylinder, t_formula_coef *coef)
+void	set_cylinder_coefficient(
+	t_line line, t_cylinder *cylinder, t_formula_coef *coef)
 {
 	t_point	temp_vec;
-	
+
 	coef->a = dot_product(line.dir_vec, line.dir_vec) - \
 	square(dot_product(line.dir_vec, cylinder->normal_vec));
 	vec_minus_vec(line.start_point, cylinder->under_cent, &temp_vec);
@@ -34,7 +35,8 @@ void	set_cylinder_coefficient(t_line line, t_cylinder *cylinder, t_formula_coef 
 	dot_product(line.dir_vec, cylinder->normal_vec);
 }
 
-void	set_cylinder_side_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cylinder, t_cylinder_set set)
+void	set_cylinder_side_plane(t_meet *meet, t_formula_coef *coef,
+	t_cylinder *cylinder, t_cylinder_set set)
 {
 	meet->temp_t = (coef->b * -1 + sqrt(coef->discriminant)) / coef->a;
 	if (0 <= ft_alpha(meet->temp_t, *cylinder, set.line) && \
@@ -48,10 +50,11 @@ void	set_cylinder_side_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cyl
 		renew_parm_t(set.obj, meet, set.line, CYLINDER);
 }
 
-void	set_cylinder_up_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cylinder, t_cylinder_set set)
+void	set_cylinder_up_plane(t_meet *meet, t_formula_coef *coef,
+	t_cylinder *cylinder, t_cylinder_set set)
 {
 	t_point	temp_vec;
-	
+
 	temp_vec = set.line.dir_vec;
 	n_multi_vec(coef->max, &temp_vec);
 	vec_plus_vec(temp_vec, set.line.start_point, &temp_vec);
@@ -67,10 +70,11 @@ void	set_cylinder_up_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cylin
 	}
 }
 
-void	set_cylinder_down_plane(t_meet *meet, t_formula_coef *coef, t_cylinder *cylinder, t_cylinder_set set)
+void	set_cylinder_down_plane(t_meet *meet, t_formula_coef *coef,
+	t_cylinder *cylinder, t_cylinder_set set)
 {
 	t_point	temp_vec;
-	
+
 	temp_vec = set.line.dir_vec;
 	n_multi_vec(coef->min, &temp_vec);
 	vec_plus_vec(temp_vec, set.line.start_point, &temp_vec);

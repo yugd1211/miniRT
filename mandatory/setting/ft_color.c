@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 18:23:31 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:04:46 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_color	ft_obj_color(t_minirt info, t_meet meet_point, t_phong *draw)
 	else
 	{
 		obj_chance = draw->obj_color;
-		ft_error("Wrong type2");
+		ft_error("Wrong Color Type2");
 	}
 	return (obj_chance);
 }
@@ -41,7 +41,7 @@ void	ft_check_hit_obj(t_meet *meet, t_object *temp_object, t_line line)
 	else if (temp_object->object_type == CONE)
 		cone_meet(*temp_object, meet, line);
 	else
-		ft_error("Wrong object");
+		ft_error("Wrong Object Type");
 }
 
 void	ft_color(t_minirt info, t_line line, int x, int y)

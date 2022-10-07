@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:28:51 by gyyu              #+#    #+#             */
-/*   Updated: 2022/10/06 21:42:36 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	set_sphere(char **list, t_object **object, int *count, t_minirt info)
 	idx = 1;
 	new = malloc(sizeof(t_sphere));
 	if (!new || !(*count == 9 || *count == 6 || *count == 8))
-		ft_error("set_sphere");
+		ft_error("Wrong Sphere");
 	new->center.x = ft_atof(list[idx++]);
 	new->center.y = ft_atof(list[idx++]);
 	new->center.z = ft_atof(list[idx++]);
@@ -55,7 +55,7 @@ void	set_cylinder(char **list, t_object **object, int *count, t_minirt info)
 	idx = 1;
 	new = malloc(sizeof(t_cylinder));
 	if (!new || !(*count == 13 || *count == 15))
-		ft_error("set_cylinder");
+		ft_error("Wrong Cylinder");
 	new->under_cent.x = ft_atof(list[idx++]);
 	new->under_cent.y = ft_atof(list[idx++]);
 	new->under_cent.z = ft_atof(list[idx++]);
@@ -84,7 +84,7 @@ void	set_plane(char **list, t_object **object, int *count, t_minirt info)
 	idx = 1;
 	new = malloc(sizeof(t_plane));
 	if (!new || !(*count == 8 || *count == 10 || *count == 11))
-		ft_error("set_plane");
+		ft_error("Wrong Plane");
 	new->in_plain.x = ft_atof(list[idx++]);
 	new->in_plain.y = ft_atof(list[idx++]);
 	new->in_plain.z = ft_atof(list[idx++]);
@@ -111,7 +111,7 @@ void	set_cone(char **list, t_object **object, int *count, t_minirt info)
 	idx = 1;
 	new = malloc(sizeof(t_cylinder));
 	if (!new || !(*count == 13 || *count == 15))
-		ft_error("set_cone\n");
+		ft_error("Wrong Cone\n");
 	new->under_cent.x = ft_atof(list[idx++]);
 	new->under_cent.y = ft_atof(list[idx++]);
 	new->under_cent.z = ft_atof(list[idx++]);

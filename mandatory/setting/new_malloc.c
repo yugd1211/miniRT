@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:05 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:55:41 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_light	*new_light(void)
 
 	new = malloc(sizeof(t_light));
 	if (!new)
-		ft_error("new_light malloc fail");
+		ft_error("Wrong Malloc");
 	new->_switch = OFF;
 	new->next = NULL;
 	return (new);

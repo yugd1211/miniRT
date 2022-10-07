@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:05:56 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:58:10 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 
 	temp_list = ft_split(temp, " \t,", &count);
 	if (temp_list == NULL)
-		ft_error("set_object");
+		ft_error("Wrong Object Splint");
 	if (ft_strncmp(temp_list[0], "A", ft_strlen("A") + 1) == 0)
 		set_ambient_lighting(temp_list, info, &count);
 	else if (ft_strncmp(temp_list[0], "C", ft_strlen("C") + 1) == 0)
@@ -34,6 +34,8 @@ int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 		set_cylinder(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
 		set_cone(temp_list, temp_obj, &count, *info);
+	else
+		ft_error("Wrong argument");
 	ft_split_free(temp_list);
 	return (0);
 }

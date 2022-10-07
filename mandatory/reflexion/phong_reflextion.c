@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_reflextion.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:24 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:26:56 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 11:54:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,28 @@ t_point	get_new_normal_vec(t_point nor_vec, t_point	temp)
 	set_unit_vec(&tangent);
 	cross_product(tangent, nor_vec, &bitangent);
 	set_unit_vec(&bitangent);
-	new_nor_vec.x = (tangent.x * temp.x + bitangent.x * temp.y + nor_vec.x * \
-	temp.z);
-	new_nor_vec.y = (tangent.y * temp.x + bitangent.y * temp.y + nor_vec.y * \
-	temp.z);
-	new_nor_vec.z = (tangent.z * temp.x + bitangent.z * temp.y + nor_vec.z * \
-	temp.z);
+	new_nor_vec.x = \
+		(tangent.x * temp.x + bitangent.x * temp.y + nor_vec.x * temp.z);
+	new_nor_vec.y = \
+		(tangent.y * temp.x + bitangent.y * temp.y + nor_vec.y * temp.z);
+	new_nor_vec.z = \
+		(tangent.z * temp.x + bitangent.z * temp.y + nor_vec.z * temp.z);
 	set_unit_vec(&new_nor_vec);
 	return (new_nor_vec);
+}
+
+void	bmp_size_tuning(t_meet *meet_point, double *u, double *v)
+{
+	if (meet_point->object_type == PLANE)
+	{
+		*u /= (double)(16);
+		*v /= (double)(8);
+	}
+	else
+	{
+		*u *= (double)(meet_point->bmp.img.width);
+		*v *= (double)(meet_point->bmp.img.height);
+	}
 }
 
 t_point	bmp(t_point nor_vec, t_meet meet_point, t_minirt info)
@@ -44,16 +58,7 @@ t_point	bmp(t_point nor_vec, t_meet meet_point, t_minirt info)
 
 	if (vec3_to_uv(meet_point, &u, &v, info) == 0)
 	{
-		if (meet_point.object_type == PLANE)
-		{
-			u /= (double)(16);
-			v /= (double)(8);
-		}
-		else
-		{
-			u *= (double)(meet_point.bmp.img.width);
-			v *= (double)(meet_point.bmp.img.height);
-		}
+		bmp_size_tuning(&meet_point, &u, &v);
 		get_color(meet_point.bmp.bmp.color[lround(v) * \
 		meet_point.bmp.bmp.width + lround(u)], &bmp);
 		temp.x = (((double)(bmp.red)) / 255 * 2 - 1);
@@ -67,11 +72,12 @@ t_point	bmp(t_point nor_vec, t_meet meet_point, t_minirt info)
 	return (new_nor_vec);
 }
 
-void	phong_reflexion(t_meet meet_point, t_light light, t_minirt info, t_phong *draw)
+void	phong_reflexion( \
+	t_meet meet_point, t_light light, t_minirt info, t_phong *draw)
 {
 	t_point						*normal_vec;
 	t_light_view_correlation	correlation;
-	t_color	obj_change;
+	t_color						obj_change;
 
 	normal_vec = ft_normal_vec(meet_point, info);
 	set_unit_vec(normal_vec);

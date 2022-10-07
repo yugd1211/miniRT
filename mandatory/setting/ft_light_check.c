@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_light_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:04:19 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:05:05 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 11:40:06 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	while_obj(t_meet *meet, t_object *temp_object, t_line line, t_light_check set)
+void	while_obj(t_meet *meet, t_object *temp, t_line line, t_light_check set)
 {
-	while (temp_object->object != NULL)
+	while (temp->object != NULL)
 	{
-		ft_check_hit_obj(meet, temp_object, line);
-		if (meet->parm_t > 0 && meet->parm_t <= distance(set.meet_point.meet, set.temp_light.light_point))
+		ft_check_hit_obj(meet, temp, line);
+		if (meet->parm_t > 0 && meet->parm_t <= \
+			distance(set.meet_point.meet, set.temp_light.light_point))
 			break ;
-		temp_object = temp_object->next;
+		temp = temp->next;
 	}
 }
 
-void	ft_set_obj_color(t_minirt info, t_meet meet_point, t_phong *draw, t_light_check *set)
+void	ft_set_obj_color( \
+	t_minirt info, t_meet meet_point, t_phong *draw, t_light_check *set)
 {
 	t_color	obj_change;
 
@@ -58,4 +60,4 @@ void	ft_light_check(t_minirt info, t_meet meet_point, t_phong *draw)
 		free(meet);
 		temp_light = temp_light->next;
 	}
-}//광원과 오브젝 사이에 임의의 오브젝이 있는지 검사;
+}

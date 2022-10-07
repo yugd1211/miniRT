@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   specular.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:41:21 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 20:27:04 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 11:40:29 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	coef_specular_reflex(t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
+double	coef_specular_reflex( \
+	t_meet meet_point, t_light light, t_minirt info, t_point nor_vec)
 {
 	t_point	light_vec;
 	t_point	camera_vec;

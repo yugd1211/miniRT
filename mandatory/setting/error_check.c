@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:32:13 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:44:15 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:30 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_plane_error(t_object **object, int *count)
 		return ;
 	else if ((*object)->color_type == BMP && *count == 10)
 		return ;
-	ft_error("set_plane");
+	ft_error("Wrong Plane Argument");
 }
 
 void	ft_cylinder_cone_error(t_object **object, int *count)
@@ -31,7 +31,10 @@ void	ft_cylinder_cone_error(t_object **object, int *count)
 		return ;
 	else if ((*object)->color_type == BMP && *count == 15)
 		return ;
-	ft_error("set_cylinder or cone");
+	if ((*object)->object_type == CYLINDER)
+		ft_error("Wrong Cylinder Argument");
+	else
+		ft_error("Wrong Cone Argument");
 }
 
 void	ft_sphere_error(t_object **object, int *count)
@@ -42,5 +45,5 @@ void	ft_sphere_error(t_object **object, int *count)
 		return ;
 	else if ((*object)->color_type == BMP && *count == 8)
 		return ;
-	ft_error("set_sphere");
+	ft_error("\nSphere Argument");
 }

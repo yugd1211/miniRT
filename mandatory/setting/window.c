@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/06 21:03:25 by iyun             ###   ########seoul.kr  */
+/*   Updated: 2022/10/07 12:53:43 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ft_set_top_left(t_minirt *info, t_point cent_vec)
 	cross_product(base_axis, info->necessity.camera.normal_vec, \
 	&(info->screen.holizon_vec));
 	set_unit_vec(&(info->screen.holizon_vec));
-	cross_product(info->necessity.camera.normal_vec, info->screen.holizon_vec,\
-	 &(info->screen.vertical_vec));
+	cross_product(info->necessity.camera.normal_vec, \
+	info->screen.holizon_vec, &(info->screen.vertical_vec));
 	set_unit_vec(&(info->screen.vertical_vec));
 	temp_horizon = info->screen.holizon_vec;
 	temp_vertical = info->screen.vertical_vec;
@@ -59,7 +59,7 @@ void	ft_set_top_left(t_minirt *info, t_point cent_vec)
 void	ft_set_screen(t_minirt *info)
 {
 	double	plane_point_dis;
-	t_point temp;
+	t_point	temp;
 
 	plane_point_dis = (info->window.win_size[WIDTH] / 2) \
 	/ tan(info->necessity.camera.fow / 2);
