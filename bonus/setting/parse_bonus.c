@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 13:22:52 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:33:50 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	set_object(char *temp, t_minirt *info, t_object **temp_obj)
 		set_cylinder(temp_list, temp_obj, &count, *info);
 	else if (ft_strncmp(temp_list[0], "co", ft_strlen("co") + 1) == 0)
 		set_cone(temp_list, temp_obj, &count, *info);
-	else
+	else if (ft_strncmp(temp_list[0], "\n", ft_strlen("\n") + 1) != 0)
 		ft_error("Wrong argument");
 	ft_split_free(temp_list);
 	return (0);
