@@ -1,0 +1,6 @@
+A  0.3                       255,255,255
+C  0,0,0    0,1,0     90
+L  0,0,-5    0.9            255,255,255
+sp  -10,30,0              10   bmp image_file/earth.xpm bump_map_file/earth_bmp.xpm
+cy  20,30,0  0,1,0   10  10  bmp image_file/earth.xpm bump_map_file/earth_bmp.xpm     25,225,75
+co  20,30,0  0,1,0   10  10  bmp image_file/earth.xpm bump_map_file/earth_bmp.xpm     25,225,75

@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:49:00 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:58:10 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:22:35 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	place_objects(char **argv, t_minirt *info)
 	temp_obj = info->head;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		exit (-1);
+		ft_error("Wrong Map");
 	temp = get_next_line(fd);
 	if (temp == NULL)
 		return (-1);

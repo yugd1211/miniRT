@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 20:04:30 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:52:03 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:21:02 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_base_axis(t_minirt info, t_point *base_axis)
 	else if (info.necessity.camera.normal_vec.x == 0 && \
 	info.necessity.camera.normal_vec.y == 0 && \
 	info.necessity.camera.normal_vec.z == 0)
-		ft_error("\nNO SCREEN");
+		ft_error("NO SCREEN");
 	else
 	{
 		base_axis->x = 0;

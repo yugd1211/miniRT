@@ -6,7 +6,7 @@
 /*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 20:25:21 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:43:17 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:22:01 by gyyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	ft_event_close(t_window *win)
 int	ft_event_red_cross(int keycode)
 {
 	(void) keycode;
-	exit (0);
-	return (0);
+	exit(0);
 }
 
 int	ft_key_press(int keycode, t_window *win)
