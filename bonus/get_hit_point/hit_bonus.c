@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:46:45 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:50:00 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 14:03:41 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,11 @@ void	sphere_meet(t_object object, t_meet *meet, t_line line)
 	if (coef.discriminant < 0.00000000)
 		return ;
 	meet->temp_t = (sqrt(coef.discriminant) - coef.b) / coef.a;
-	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+	if (meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t \
+			|| ft_equal(meet->parm_t, 0.00000000) == 0))
 		renew_parm_t(object, meet, line, SPHERE);
 	meet->temp_t = (sqrt(coef.discriminant) * -1 - coef.b) / coef.a;
-	if (meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+	if (meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t \
+			|| ft_equal(meet->parm_t, 0.00000000) == 0))
 		renew_parm_t(object, meet, line, SPHERE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyyu <gyyu@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: iyun <iyun@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:49:20 by iyun              #+#    #+#             */
-/*   Updated: 2022/10/07 12:41:32 by gyyu             ###   ########.fr       */
+/*   Updated: 2022/10/07 14:05:21 by iyun             ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void	set_cone_side_plane(t_meet *meet, t_formula_coef *coef,
 	meet->temp_t = (coef->b * -1 + sqrt(coef->discriminant)) / coef->a;
 	if (0 <= ft_alpha(meet->temp_t, *cone, set.line) && \
 		ft_alpha(meet->temp_t, *cone, set.line) <= cone->height && \
-		meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+		meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t \
+			|| ft_equal(meet->parm_t, 0.00000000) == 0))
 		renew_parm_t(set.obj, meet, set.line, CONE);
 	meet->temp_t = (coef->b * -1 - sqrt(coef->discriminant)) / coef->a;
 	if (0 <= ft_alpha(meet->temp_t, *cone, set.line) && \
 		ft_alpha(meet->temp_t, *cone, set.line) <= cone->height && \
-		meet->temp_t > 0 && (meet->parm_t > meet->temp_t || meet->parm_t == 0))
+		meet->temp_t > 0.00000001 && (meet->parm_t > meet->temp_t \
+			|| ft_equal(meet->parm_t, 0.00000000) == 0))
 		renew_parm_t(set.obj, meet, set.line, CONE);
 }
 
